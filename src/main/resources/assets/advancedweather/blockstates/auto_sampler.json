@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north,light=idle":    { "model": "advancedweather:block/auto_sampler_idle" },
+    "facing=south,light=idle":    { "model": "advancedweather:block/auto_sampler_idle", "y": 180 },
+    "facing=west,light=idle":     { "model": "advancedweather:block/auto_sampler_idle", "y": 270 },
+    "facing=east,light=idle":     { "model": "advancedweather:block/auto_sampler_idle", "y": 90 },
+    "facing=north,light=ok":      { "model": "advancedweather:block/auto_sampler_ok" },
+    "facing=south,light=ok":      { "model": "advancedweather:block/auto_sampler_ok", "y": 180 },
+    "facing=west,light=ok":       { "model": "advancedweather:block/auto_sampler_ok", "y": 270 },
+    "facing=east,light=ok":       { "model": "advancedweather:block/auto_sampler_ok", "y": 90 },
+    "facing=north,light=warning": { "model": "advancedweather:block/auto_sampler_warning" },
+    "facing=south,light=warning": { "model": "advancedweather:block/auto_sampler_warning", "y": 180 },
+    "facing=west,light=warning":  { "model": "advancedweather:block/auto_sampler_warning", "y": 270 },
+    "facing=east,light=warning":  { "model": "advancedweather:block/auto_sampler_warning", "y": 90 },
+    "facing=north,light=error":   { "model": "advancedweather:block/auto_sampler_error" },
+    "facing=south,light=error":   { "model": "advancedweather:block/auto_sampler_error", "y": 180 },
+    "facing=west,light=error":    { "model": "advancedweather:block/auto_sampler_error", "y": 270 },
+    "facing=east,light=error":    { "model": "advancedweather:block/auto_sampler_error", "y": 90 }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " I ",
+    "INI",
+    " I "
+  ],
+  "key": {
+    "I": { "item": "advancedweather:aluminum_sheet" },
+    "N": { "item": "advancedweather:aluminum_nugget" }
+  },
+  "result": {
+    "id": "advancedweather:cup_rotor",
+    "count": 1
+  }
+}

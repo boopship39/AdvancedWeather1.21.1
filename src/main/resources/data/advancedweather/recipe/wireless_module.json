@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " E ",
+    ".#.",
+    " o "
+  ],
+  "key": {
+    "#": {
+      "item": "advancedweather:aluminum_block"
+    },
+    "E": {
+      "item": "minecraft:ender_eye"
+    },
+    ".": {
+      "item": "minecraft:redstone"
+    },
+    "o": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "result": {
+    "id": "advancedweather:wireless_module"
+  }
+}

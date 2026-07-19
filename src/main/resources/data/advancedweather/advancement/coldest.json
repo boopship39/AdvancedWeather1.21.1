@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:packed_ice"
+    },
+    "title": {
+      "text": "Into the Void"
+    },
+    "description": {
+      "text": "Endure the coldest temperature ever recorded"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "advancedweather:end_skies",
+  "criteria": {
+    "trigger_from_code": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

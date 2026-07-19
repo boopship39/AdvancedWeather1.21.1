@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "R"
+  ],
+  "key": { "R": { "item": "advancedweather:cinnabar_block" } },
+  "result": { "id": "advancedweather:cinnabar_dust", "count": 9 }
+}

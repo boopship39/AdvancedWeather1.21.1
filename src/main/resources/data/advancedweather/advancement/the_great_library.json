@@ -1,0 +1,15 @@
+{
+  "display": {
+    "icon": { "id": "advancedweather:weather_almanac" },
+    "title": { "translate": "advancement.advancedweather.the_great_library.title" },
+    "description": { "translate": "advancement.advancedweather.the_great_library.description" },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "advancedweather:history_in_the_making",
+  "criteria": {
+    "code": { "trigger": "minecraft:impossible" }
+  }
+}

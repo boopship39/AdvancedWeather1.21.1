@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "id": "advancedweather:weather_almanac" },
+    "title": { "translate": "advancement.advancedweather.end_almanac.title" },
+    "description": { "translate": "advancement.advancedweather.end_almanac.description" },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "advancedweather:end_skies",
+  "criteria": {
+    "void_storm": { "trigger": "minecraft:impossible" },
+    "end_mist": { "trigger": "minecraft:impossible" },
+    "chorus_gale": { "trigger": "minecraft:impossible" },
+    "enderstorm": { "trigger": "minecraft:impossible" }
+  }
+}

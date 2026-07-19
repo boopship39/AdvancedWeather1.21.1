@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": { "id": "advancedweather:weather_almanac" },
+    "title": { "translate": "advancement.advancedweather.overworld_almanac.title" },
+    "description": { "translate": "advancement.advancedweather.overworld_almanac.description" },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "advancedweather:overworld_skies",
+  "criteria": {
+    "mist": { "trigger": "minecraft:impossible" },
+    "fog": { "trigger": "minecraft:impossible" },
+    "dense_fog": { "trigger": "minecraft:impossible" },
+    "drizzle": { "trigger": "minecraft:impossible" },
+    "light_rain": { "trigger": "minecraft:impossible" },
+    "heavy_rain": { "trigger": "minecraft:impossible" },
+    "freezing_rain": { "trigger": "minecraft:impossible" },
+    "thunderstorm": { "trigger": "minecraft:impossible" },
+    "snow": { "trigger": "minecraft:impossible" },
+    "blizzard": { "trigger": "minecraft:impossible" },
+    "hail": { "trigger": "minecraft:impossible" },
+    "windy": { "trigger": "minecraft:impossible" },
+    "sandstorm": { "trigger": "minecraft:impossible" }
+  }
+}

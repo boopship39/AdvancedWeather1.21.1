@@ -1,0 +1,20 @@
+{
+  "values": [
+    "advancedweather:weather_station",
+    "advancedweather:weather_archive",
+    "advancedweather:weather_detector",
+    "advancedweather:sensor_casing",
+    "advancedweather:barometer",
+    "advancedweather:thermometer",
+    "advancedweather:hygrometer",
+    "advancedweather:anemometer",
+    "advancedweather:auto_sampler",
+    "advancedweather:cinnabar_ore",
+    "advancedweather:deepslate_cinnabar_ore",
+    "advancedweather:raw_cinnabar_block",
+    "advancedweather:cinnabar_block",
+    "advancedweather:bauxite_rock",
+    "advancedweather:aluminum_block",
+    "advancedweather:mercury_cauldron"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " I ",
+    "IMI",
+    " D "
+  ],
+  "key": {
+    "I": { "item": "advancedweather:aluminum_sheet" },
+    "D": { "item": "advancedweather:dial" },
+    "M": { "item": "advancedweather:calibrated_spring" }
+  },
+  "result": {
+    "id": "advancedweather:portable_barometer",
+    "count": 1
+  }
+}

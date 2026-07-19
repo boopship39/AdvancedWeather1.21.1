@@ -1,0 +1,32 @@
+{
+  "hail_loop": {
+    "category": "weather",
+    "subtitle": "subtitles.advancedweather.hail",
+    "sounds": [
+      {
+        "name": "advancedweather:hail",
+        "volume": 0.5
+      }
+    ]
+  },
+  "wind_light": {
+    "subtitle": "subtitles.advancedweather.wind.light",
+    "sounds": [
+      {
+        "name": "advancedweather:wind_light",
+        "volume": 0.5,
+        "stream": true
+      }
+    ]
+  },
+  "wind_heavy": {
+    "subtitle": "subtitles.advancedweather.wind.heavy",
+    "sounds": [
+      {
+        "name": "advancedweather:wind_heavy",
+        "volume": 0.5,
+        "stream": true
+      }
+    ]
+  }
+}

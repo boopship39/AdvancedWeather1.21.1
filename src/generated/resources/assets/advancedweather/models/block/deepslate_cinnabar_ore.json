@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "advancedweather:block/deepslate_cinnabar_ore"
+  }
+}

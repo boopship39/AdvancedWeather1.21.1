@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "advancedweather:cinnabar_ore"
+    }
+  ],
+  "processing_time": 250,
+  "results": [
+    {
+      "id": "advancedweather:raw_cinnabar"
+    },
+    {
+      "chance": 0.25,
+      "id": "advancedweather:raw_cinnabar"
+    },
+    {
+      "chance": 0.75,
+      "id": "create:experience_nugget"
+    },
+    {
+      "chance": 0.125,
+      "id": "minecraft:cobblestone"
+    }
+  ]
+}

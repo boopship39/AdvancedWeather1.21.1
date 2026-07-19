@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "R"
+  ],
+  "key": { "R": { "item": "advancedweather:aluminum_ingot" } },
+  "result": { "id": "advancedweather:aluminum_nugget", "count": 9 }
+}

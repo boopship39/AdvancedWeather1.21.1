@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": { "id": "advancedweather:weather_almanac" },
+    "title": { "translate": "advancement.advancedweather.nether_almanac.title" },
+    "description": { "translate": "advancement.advancedweather.nether_almanac.description" },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "advancedweather:nether_skies",
+  "criteria": {
+    "ash_storm": { "trigger": "minecraft:impossible" },
+    "brimstone_storm": { "trigger": "minecraft:impossible" },
+    "lava_rain": { "trigger": "minecraft:impossible" },
+    "netherstorm": { "trigger": "minecraft:impossible" },
+    "hellfire": { "trigger": "minecraft:impossible" }
+  }
+}

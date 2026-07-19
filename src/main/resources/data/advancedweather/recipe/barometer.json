@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " D ",
+    "ASA",
+    "sPs"
+  ],
+  "key": {
+    "D": {
+      "item": "advancedweather:weather_display"
+    },
+    "A": {
+      "item": "advancedweather:aluminum_sheet"
+    },
+    "S": {
+      "item": "advancedweather:sensor_casing"
+    },
+    "P": {
+      "item": "advancedweather:portable_barometer"
+    },
+    "s": {
+      "item": "advancedweather:calibrated_spring"
+    }
+  },
+  "result": {
+    "id": "advancedweather:barometer"
+  }
+}

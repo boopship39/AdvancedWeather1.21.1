@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": { "id": "advancedweather:portable_thermometer" },
+    "title": { "translate": "advancement.advancedweather.first_instrument.title" },
+    "description": { "translate": "advancement.advancedweather.first_instrument.description" },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "advancedweather:calibrate",
+  "criteria": {
+    "obtain": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": [
+            "advancedweather:portable_thermometer",
+            "advancedweather:portable_barometer",
+            "advancedweather:portable_hygrometer",
+            "advancedweather:portable_anemometer"
+          ] }
+        ]
+      }
+    }
+  }
+}

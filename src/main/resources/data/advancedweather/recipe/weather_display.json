@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    ". R",
+    "==="
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:glass_pane"
+    },
+    ".": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "=": {
+      "item": "advancedweather:aluminum_sheet"
+    }
+  },
+  "result": {
+    "id": "advancedweather:weather_display"
+  }
+}

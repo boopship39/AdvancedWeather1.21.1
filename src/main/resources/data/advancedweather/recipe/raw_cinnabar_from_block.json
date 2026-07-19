@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [{ "item": "advancedweather:raw_cinnabar_block" }],
+  "result": { "id": "advancedweather:raw_cinnabar", "count": 9 }
+}

@@ -1,0 +1,15 @@
+{
+  "display": {
+    "icon": { "id": "minecraft:lightning_rod" },
+    "title": { "translate": "advancement.advancedweather.thunderstruck.title" },
+    "description": { "translate": "advancement.advancedweather.thunderstruck.description" },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "advancedweather:overworld_skies",
+  "criteria": {
+    "code": { "trigger": "minecraft:impossible" }
+  }
+}

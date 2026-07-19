@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "advancedweather:alumina"
+    },
+    {
+      "item": "advancedweather:alumina"
+    },
+    {
+      "item": "minecraft:coal"
+    }
+  ],
+  "result": {
+    "id": "advancedweather:alumina_carbon_mix",
+    "count": 2
+  }
+}

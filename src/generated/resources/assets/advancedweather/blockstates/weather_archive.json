@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "advancedweather:block/weather_archive",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "advancedweather:block/weather_archive"
+    },
+    "facing=south": {
+      "model": "advancedweather:block/weather_archive",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "advancedweather:block/weather_archive",
+      "y": 270
+    }
+  }
+}

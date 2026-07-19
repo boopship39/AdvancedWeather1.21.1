@@ -1,0 +1,34 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.antopfr.advancedweather.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "BiomeMixin",
+    "BlockFrictionMixin",
+    "FireBlockMixin",
+    "IceBlockAccessor",
+    "IceBlockMixin",
+    "ServerLevelMixin",
+    "SnowLayerBlockMixin",
+    "compat.SeasonHooksClientMixin",
+    "compat.SeasonHooksServerMixin"
+  ],
+  "client": [
+    "client.BiomeClientMixin",
+    "client.CloudRendererMixin",
+    "client.EndSkyMixin",
+    "client.LevelMixin",
+    "client.LevelRendererMixin",
+    "client.LightningBoltRendererMixin",
+    "client.NetherEffectsMixin",
+    "client.ParticleMixin",
+    "client.SkyColorMixin",
+    "client.StarRenderMixin",
+    "client.SunMixin",
+    "compat.WindmillBearingMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

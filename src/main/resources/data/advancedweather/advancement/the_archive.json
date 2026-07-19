@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "id": "advancedweather:weather_archive" },
+    "title": { "translate": "advancement.advancedweather.the_archive.title" },
+    "description": { "translate": "advancement.advancedweather.the_archive.description" },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "advancedweather:for_the_record",
+  "criteria": {
+    "obtain": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": { "items": [ { "items": "advancedweather:weather_archive" } ] }
+    }
+  }
+}

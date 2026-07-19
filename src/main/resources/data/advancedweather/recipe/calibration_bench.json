@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "LTC",
+    "#_#",
+    "O O"
+  ],
+  "key": {
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "T": {
+      "item": "minecraft:tripwire_hook"
+    },
+    "C": {
+      "item": "advancedweather:calibration_tool"
+    },
+    "#": {
+      "item": "minecraft:oak_planks"
+    },
+    "_": {
+      "item": "minecraft:oak_slab"
+    },
+    "O": {
+      "item": "minecraft:oak_fence"
+    }
+  },
+  "result": {
+    "id": "advancedweather:calibration_bench"
+  }
+}

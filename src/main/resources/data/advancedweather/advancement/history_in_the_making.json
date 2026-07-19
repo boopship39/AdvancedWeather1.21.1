@@ -1,0 +1,15 @@
+{
+  "display": {
+    "icon": { "id": "advancedweather:weather_report" },
+    "title": { "translate": "advancement.advancedweather.history_in_the_making.title" },
+    "description": { "translate": "advancement.advancedweather.history_in_the_making.description" },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "advancedweather:the_archive",
+  "criteria": {
+    "code": { "trigger": "minecraft:impossible" }
+  }
+}

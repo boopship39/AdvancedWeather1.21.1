@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " D ",
+    "ASA",
+    "dPc"
+  ],
+  "key": {
+    "D": {
+      "item": "advancedweather:weather_display"
+    },
+    "A": {
+      "item": "advancedweather:aluminum_sheet"
+    },
+    "S": {
+      "item": "advancedweather:sensor_casing"
+    },
+    "P": {
+      "item": "advancedweather:portable_anemometer"
+    },
+    "c": {
+      "item": "advancedweather:calibrated_cup_rotor"
+    },
+    "d": {
+      "item": "advancedweather:dial"
+    }
+  },
+  "result": {
+    "id": "advancedweather:anemometer"
+  }
+}

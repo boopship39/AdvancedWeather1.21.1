@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "advancedweather:block/anemometer",
+    "side": "advancedweather:block/sensor_casing_fans",
+    "top": "advancedweather:block/sensor_casing"
+  }
+}

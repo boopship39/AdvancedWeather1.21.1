@@ -1,0 +1,20 @@
+{
+  "display": {
+    "icon": { "id": "advancedweather:mercury_vial" },
+    "title": { "translate": "advancement.advancedweather.mercury.title" },
+    "description": { "translate": "advancement.advancedweather.mercury.description" },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "advancedweather:mine_cinnabar",
+  "criteria": {
+    "obtain": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [ { "items": "advancedweather:mercury_vial" } ]
+      }
+    }
+  }
+}

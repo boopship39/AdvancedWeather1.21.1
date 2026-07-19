@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " I ",
+    "IGI",
+    " R "
+  ],
+  "key": {
+    "I": { "item": "advancedweather:aluminum_ingot" },
+    "G": { "item": "minecraft:glass_pane" },
+    "R": { "item": "minecraft:redstone" }
+  },
+  "result": {
+    "id": "advancedweather:dial",
+    "count": 1
+  }
+}

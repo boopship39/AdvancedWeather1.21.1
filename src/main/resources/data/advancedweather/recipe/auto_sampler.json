@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " D ",
+    "WSL",
+    "AAA"
+  ],
+  "key": {
+    "S": {
+      "item": "advancedweather:sensor_casing"
+    },
+    "W": {
+      "item": "advancedweather:wireless_module"
+    },
+    "L": {
+      "item": "minecraft:redstone_lamp"
+    },
+    "A": {
+      "item": "advancedweather:aluminum_sheet"
+    },
+    "D": {
+      "item": "advancedweather:weather_display"
+    }
+  },
+  "result": {
+    "id": "advancedweather:auto_sampler"
+  }
+}

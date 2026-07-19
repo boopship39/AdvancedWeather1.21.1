@@ -1,0 +1,12 @@
+{
+  "values": [
+    "minecraft:fire",
+    "minecraft:soul_fire",
+    "minecraft:lava",
+    "minecraft:magma_block",
+    {
+      "id": "create:lit_blaze_burner",
+      "required": false
+    }
+  ]
+}

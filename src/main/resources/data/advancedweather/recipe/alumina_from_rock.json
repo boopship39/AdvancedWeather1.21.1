@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "advancedweather:hammer"
+    },
+    {
+      "item": "advancedweather:bauxite_rock"
+    }
+  ],
+  "result": {
+    "id": "advancedweather:alumina",
+    "count": 2
+  }
+}

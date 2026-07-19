@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": { "id": "advancedweather:calibrated_spring" },
+    "title": { "translate": "advancement.advancedweather.calibrate.title" },
+    "description": { "translate": "advancement.advancedweather.calibrate.description" },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "advancedweather:calibration_bench",
+  "criteria": {
+    "obtain": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": [
+            "advancedweather:calibrated_spring",
+            "advancedweather:calibrated_cup_rotor",
+            "advancedweather:calibrated_sensitive_fiber"
+          ] }
+        ]
+      }
+    }
+  }
+}

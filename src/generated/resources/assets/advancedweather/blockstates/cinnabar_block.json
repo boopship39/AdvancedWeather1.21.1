@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "advancedweather:block/cinnabar_block"
+    }
+  }
+}

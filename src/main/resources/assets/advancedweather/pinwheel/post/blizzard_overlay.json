@@ -1,0 +1,10 @@
+{
+  "stages": [
+    {
+      "type": "veil:blit",
+      "shader": "advancedweather:blizzard_overlay",
+      "in": "minecraft:main",
+      "out": "veil:post"
+    }
+  ]
+}

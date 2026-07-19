@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "facing=north,model=main": { "model": "advancedweather:block/calibration_bench" },
+    "facing=east,model=main":  { "model": "advancedweather:block/calibration_bench", "y": 90 },
+    "facing=south,model=main": { "model": "advancedweather:block/calibration_bench", "y": 180 },
+    "facing=west,model=main":  { "model": "advancedweather:block/calibration_bench", "y": 270 },
+
+    "facing=north,model=side": { "model": "advancedweather:block/calibration_bench" },
+    "facing=east,model=side":  { "model": "advancedweather:block/calibration_bench", "y": 90 },
+    "facing=south,model=side": { "model": "advancedweather:block/calibration_bench", "y": 180 },
+    "facing=west,model=side":  { "model": "advancedweather:block/calibration_bench", "y": 270 }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " ##",
+    " /B",
+    ".  "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:gold_ingot"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    },
+    "B": {
+      "item": "minecraft:blue_dye"
+    },
+    ".": {
+      "item": "advancedweather:aluminum_ingot"
+    }
+  },
+  "result": {
+    "id": "advancedweather:calibration_tool"
+  }
+}

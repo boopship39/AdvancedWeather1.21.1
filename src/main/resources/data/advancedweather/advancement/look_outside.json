@@ -1,0 +1,15 @@
+{
+  "display": {
+    "icon": { "id": "minecraft:spyglass" },
+    "title": { "translate": "advancement.advancedweather.look_outside.title" },
+    "description": { "translate": "advancement.advancedweather.look_outside.description" },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "advancedweather:root",
+  "criteria": {
+    "code": { "trigger": "minecraft:impossible" }
+  }
+}

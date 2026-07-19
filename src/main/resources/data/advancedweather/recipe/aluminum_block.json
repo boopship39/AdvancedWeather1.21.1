@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "advancedweather:aluminum_ingot"
+    }
+  },
+  "result": {
+    "id": "advancedweather:aluminum_block"
+  }
+}

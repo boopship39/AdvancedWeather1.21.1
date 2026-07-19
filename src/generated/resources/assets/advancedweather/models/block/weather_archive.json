@@ -1,0 +1,46 @@
+{
+  "parent": "minecraft:block/block",
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "rotation": 270,
+          "texture": "#side"
+        },
+        "east": {
+          "texture": "#side_mirrored"
+        },
+        "north": {
+          "texture": "#front"
+        },
+        "south": {
+          "texture": "#back"
+        },
+        "up": {
+          "rotation": 90,
+          "texture": "#side"
+        },
+        "west": {
+          "texture": "#side"
+        }
+      },
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ]
+    }
+  ],
+  "textures": {
+    "back": "advancedweather:block/sensor_casing_fans",
+    "front": "advancedweather:block/weather_archive_front",
+    "particle": "advancedweather:block/weather_archive_side",
+    "side": "advancedweather:block/weather_archive_side",
+    "side_mirrored": "advancedweather:block/weather_archive_side_mirrored"
+  }
+}

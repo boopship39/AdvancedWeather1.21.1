@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "advancedweather:raw_cinnabar_block"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "advancedweather:blocks/raw_cinnabar_block"
+}

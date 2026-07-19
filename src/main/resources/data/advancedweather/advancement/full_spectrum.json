@@ -1,0 +1,15 @@
+{
+  "display": {
+    "icon": { "id": "advancedweather:barometer" },
+    "title": { "translate": "advancement.advancedweather.full_spectrum.title" },
+    "description": { "translate": "advancement.advancedweather.full_spectrum.description" },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "advancedweather:wired_in",
+  "criteria": {
+    "code": { "trigger": "minecraft:impossible" }
+  }
+}

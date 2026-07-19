@@ -1,0 +1,20 @@
+{
+  "display": {
+    "icon": { "id": "advancedweather:aluminum_ingot" },
+    "title": { "translate": "advancement.advancedweather.aluminum.title" },
+    "description": { "translate": "advancement.advancedweather.aluminum.description" },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "advancedweather:mine_bauxite",
+  "criteria": {
+    "obtain": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [ { "items": "advancedweather:aluminum_ingot" } ]
+      }
+    }
+  }
+}

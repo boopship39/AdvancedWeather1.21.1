@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "advancedweather:block/anemometer" },
+    "facing=south": { "model": "advancedweather:block/anemometer", "y": 180 },
+    "facing=west":  { "model": "advancedweather:block/anemometer", "y": 270 },
+    "facing=east":  { "model": "advancedweather:block/anemometer", "y": 90 }
+  }
+}

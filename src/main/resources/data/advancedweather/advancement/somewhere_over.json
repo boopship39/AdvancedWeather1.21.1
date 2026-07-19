@@ -1,0 +1,15 @@
+{
+  "display": {
+    "icon": { "id": "minecraft:firework_star" },
+    "title": { "translate": "advancement.advancedweather.somewhere_over.title" },
+    "description": { "translate": "advancement.advancedweather.somewhere_over.description" },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "parent": "advancedweather:overworld_skies",
+  "criteria": {
+    "code": { "trigger": "minecraft:impossible" }
+  }
+}

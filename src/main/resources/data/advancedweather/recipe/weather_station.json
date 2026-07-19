@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " D ",
+    " S ",
+    " P "
+  ],
+  "key": {
+    "S": {
+      "item": "advancedweather:sensor_casing"
+    },
+    "D": {
+      "item": "advancedweather:weather_display"
+    },
+    "P": {
+      "item": "minecraft:paper"
+    }
+  },
+  "result": {
+    "id": "advancedweather:weather_station"
+  }
+}

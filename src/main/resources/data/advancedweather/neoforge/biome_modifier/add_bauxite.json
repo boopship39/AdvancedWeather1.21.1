@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_jungle",
+  "features": [
+    "advancedweather:bauxite_soil_placed",
+    "advancedweather:bauxite_rock_placed"
+  ],
+  "step": "underground_ores"
+}

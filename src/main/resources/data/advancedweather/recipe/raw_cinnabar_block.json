@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": ["RRR", "RRR", "RRR"],
+  "key": { "R": { "item": "advancedweather:raw_cinnabar" } },
+  "result": { "id": "advancedweather:raw_cinnabar_block", "count": 1 }
+}

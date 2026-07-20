@@ -43,7 +43,6 @@ public class RainbowEntityRenderer extends EntityRenderer<RainbowEntity> {
         float intensity = entity.getIntensity();
         if (intensity < 0.01f) return;
 
-        // Scale de croissance — l'arc "grandit" depuis le sol au spawn
         float growScale = entity.getGrowScale();
         if (growScale < 0.01f) return;
 
@@ -53,7 +52,6 @@ public class RainbowEntityRenderer extends EntityRenderer<RainbowEntity> {
         Vec3 antiSunVec = entity.getAntiSunDirection();
         Vector3f antiSun = new Vector3f((float) antiSunVec.x, (float) antiSunVec.y, (float) antiSunVec.z).normalize();
 
-        // L'entité EST l'apex du cône — poseStack déjà centré là
         Vector3f up = Math.abs(antiSun.y) > 0.99f ? new Vector3f(1, 0, 0) : new Vector3f(0, 1, 0);
         Vector3f right = new Vector3f(up).cross(antiSun).normalize();
         up = new Vector3f(antiSun).cross(right).normalize();
@@ -190,7 +188,6 @@ public class RainbowEntityRenderer extends EntityRenderer<RainbowEntity> {
         if (mc.isPaused()) return;
         if (intensity < 0.1f) return;
 
-        // Seulement 1 particule toutes les quelques frames pour rester discret
         if (particleRandom.nextFloat() > 0.15f) return;
 
         float angleDeg = Mth.lerp(particleRandom.nextFloat(), PRIMARY_MIN - 1.0f, PRIMARY_MAX + 0.5f);
@@ -245,7 +242,7 @@ public class RainbowEntityRenderer extends EntityRenderer<RainbowEntity> {
     }
 
     @Override
-    public ResourceLocation getTextureLocation(RainbowEntity entity) {
+    public @NotNull ResourceLocation getTextureLocation(@NotNull RainbowEntity entity) {
         return null;
     }
 

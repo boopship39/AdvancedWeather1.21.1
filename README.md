@@ -84,7 +84,7 @@ Build a working meteorological station:
 - **Weather Detector** - emits redstone based on weather (rain, snow, storm, thunderstorm, hail, or an analog 0–15 wind signal).
 - **Weather Almanac** - a portable record of archived trends.
 
-Two keybinds open a **weather history graph** and a **probable-transitions view** so you can study the atmosphere directly.
+Two keybinds open a **weather history graph** and a **probable-transitions view** so you can study the atmosphere directly (only on debug mode).
 
 ### 🌐 Real-world weather mode *(opt-in)*
 
@@ -117,7 +117,6 @@ A **YACL config screen** is provided for in-game editing.
 | **YetAnotherConfigLib (YACL)** | Required (client) | In-game config screen |
 | **Create** | Optional | Windmills react to real wind (speed & direction); weather data on Display Boards |
 | **Serene Seasons** | Optional | Season-aware temperature & dew point |
-| **Better Clouds** | Optional (client) | Enhanced cloud rendering integration |
 | **JEI** | Optional (client) | Calibration Bench recipes in the recipe viewer |
 
 ---

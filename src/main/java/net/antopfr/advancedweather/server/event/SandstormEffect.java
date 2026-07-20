@@ -17,11 +17,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
-/**
- * While a sandstorm blows, players standing out in the open in a sandy biome are slowed and
- * tire faster (blowing sand). Only where the sandstorm visuals actually appear, and only when
- * exposed to the sky — sheltering under a roof protects.
- */
 @EventBusSubscriber(modid = "advancedweather")
 public class SandstormEffect {
 
@@ -34,11 +29,11 @@ public class SandstormEffect {
         ServerLevel level = player.serverLevel();
         if (!level.dimension().equals(Level.OVERWORLD)) return;
         if (WeatherManager.get(level).getCurrentWeather(level) != WeatherTypes.SANDSTORM) return;
-        if (level.getGameTime() % 40 != 0) return; // every 2s
+        if (level.getGameTime() % 40 != 0) return;
 
         BlockPos pos = player.blockPosition();
-        if (!level.canSeeSky(pos)) return;        // sheltered
-        if (!isSandyBiome(level, pos)) return;    // only where the storm blows
+        if (!level.canSeeSky(pos)) return;
+        if (!isSandyBiome(level, pos)) return;
 
         player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 0, false, false, true));
         player.causeFoodExhaustion(0.5f);

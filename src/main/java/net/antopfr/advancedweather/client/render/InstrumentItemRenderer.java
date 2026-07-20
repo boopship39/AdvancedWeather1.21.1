@@ -7,7 +7,7 @@ import net.antopfr.advancedweather.AdvancedWeather;
 import net.antopfr.advancedweather.client.state.ClientAtmosphereState;
 import net.antopfr.advancedweather.content.item.AWItems;
 import net.antopfr.advancedweather.weather.AtmosphericSystem;
-import net.createmod.catnip.utility.AnimationTickHolder;
+import net.createmod.catnip.animation.AnimationTickHolder;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
@@ -116,7 +116,7 @@ public class InstrumentItemRenderer extends BlockEntityWithoutLevelRenderer {
         pose.pushPose();
         pose.translate(0.5f, 0.5f, 0.5f);
         baked = ClientHooks.handleCameraTransforms(pose, baked, context, false);
-        pose.translate(-0.5f, -0.5f, -0.5f); // recentrage, une seule fois, après les transforms
+        pose.translate(-0.5f, -0.5f, -0.5f);
         Minecraft.getInstance().getItemRenderer().renderModelLists(baked, stack, light, overlay, pose,
                 buffers.getBuffer(Sheets.cutoutBlockSheet()));
         pose.popPose();

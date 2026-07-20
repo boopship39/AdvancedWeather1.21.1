@@ -5,9 +5,8 @@
 <!-- Badges: replace the URLs once the project is published -->
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-brightgreen)]()
 [![Loader](https://img.shields.io/badge/Loader-NeoForge-orange)]()
-[![License](https://img.shields.io/badge/License-MIT-blue)]()
+[![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE.txt)
 
-<!-- Hero image: 1920x1080 in-game shot of a dramatic weather (blizzard or sandstorm) with wind lines visible -->
 <p align="center">
   <img src="docs/images/banner.png" alt="Advanced Weather" width="100%">
 </p>
@@ -39,11 +38,41 @@ Everything is per-dimension and saved with the world.
 
 ### 🌦️ 28 weather types across three dimensions
 
-**Overworld (17):** Clear · Sunny · Cloudy · Overcast · Mist · Fog · Dense Fog · Drizzle · Light Rain · Heavy Rain · Freezing Rain · Thunderstorm · Snow · Blizzard · Hail · Windy · Sandstorm
+## **Overworld (17):** 
+#### Clear · Sunny · Cloudy · Overcast · Mist · Fog · Dense Fog · Drizzle · Light Rain · Heavy Rain · Freezing Rain · Thunderstorm · Snow · Blizzard · Hail · Windy · Sandstorm
+<p>
+  <img src="docs/images/heavy_rain.png" alt="Heavy Rain" width="75%">
+</p>
+<p>
+  <img src="docs/images/sandstorm.png" alt="Sandstorm" width="75%">
+</p>
+<p>
+  <img src="docs/images/blizzard.png" alt="Blizzard" width="75%">
+</p>
 
-**Nether (6):** Nether Clear · Ash Storm · Brimstone Storm · Lava Rain · Netherstorm · Hellfire
+## **Nether (6):** 
+#### Nether Clear · Ash Storm · Brimstone Storm · Lava Rain · Netherstorm · Hellfire
+<p>
+  <img src="docs/images/hellfire.png" alt="Hellfire" width="75%">
+</p>
+<p>
+  <img src="docs/images/lava_rain.png" alt="Lava Rain" width="75%">
+</p>
 
-**The End (5):** End Clear · End Mist · Void Storm · Chorus Gale · Enderstorm
+## **The End (5):** 
+#### End Clear · End Mist · Void Storm · Chorus Gale · Enderstorm
+<p>
+  <img src="docs/images/void_storm.png" alt="Void Storm" width="75%">
+</p>
+<p>
+  <img src="docs/images/enderstorm.png" alt="Enderstorm" width="75%">
+</p>
+
+A configurable HUD shows which weather type is active, along with the time of day (can be disabled in the config):
+<p>
+  <img src="docs/images/weather_hud.png" alt="Weather HUD">
+</p>
+
 
 ### ✨ Atmospheric effects
 
@@ -51,7 +80,7 @@ Each weather brings its own hand-tuned visuals and audio:
 
 - Volumetric **wind lines** and directional wind sound that scale with intensity and gusts.
 - Weather-specific particles: blizzard flakes, sand, ash, ground fog, freezing splashes, hail, ember/void particles.
-- **Rainbows** that can spawn after rain clears, **heat shimmer** in extreme heat, **water and lava ripples**, wind-blown **tumbleweeds** and drifting **chorus plants**.
+- **Rainbows** that can spawn after rain clears or during drizzle, **heat shimmer** in extreme heat, **water and lava ripples**, wind-blown **tumbleweeds** and drifting **chorus plants**.
 - Dynamic **fog, sky, cloud, sun, star and lightning** rendering that reacts to the current weather.
 
 ### ⚡ Weather that affects gameplay
@@ -72,6 +101,9 @@ Advanced Weather is also a **tech-progression mod**. You can't just read the wea
 - **Four core instruments**, each built from a calibrated heart: **Thermometer** (mercury vial), **Barometer** (spring), **Hygrometer** (sensitive fiber), **Anemometer** (cup rotor).
 - **Calibration Bench** and **Calibration Tool** - components must be calibrated before assembly, and sensors linked to stations.
 - **Portable** versions of every instrument for readings on the move.
+<p>
+  <img src="docs/images/calibration_bench.png" alt="Calibration Bench" width="75%">
+</p>
 
 ### 📟 The weather station network
 
@@ -85,6 +117,13 @@ Build a working meteorological station:
 - **Weather Almanac** - a portable record of archived trends.
 
 Two keybinds open a **weather history graph** and a **probable-transitions view** so you can study the atmosphere directly (only on debug mode).
+<p>
+  <img src="docs/images/machines.png" alt="Machines" width="75%">
+</p>
+<p>
+  <img src="docs/images/sensors.png" alt="Sensors" width="75%">
+</p>
+
 
 ### 🌐 Real-world weather mode *(opt-in)*
 
@@ -111,13 +150,14 @@ A **YACL config screen** is provided for in-game editing.
 
 ## Compatibility
 
-| Mod | Type | What it adds |
-|-----|------|--------------|
-| **NeoForge** | Required | Loader |
-| **YetAnotherConfigLib (YACL)** | Required (client) | In-game config screen |
-| **Create** | Optional | Windmills react to real wind (speed & direction); weather data on Display Boards |
-| **Serene Seasons** | Optional | Season-aware temperature & dew point |
-| **JEI** | Optional (client) | Calibration Bench recipes in the recipe viewer |
+| Mod                            | Type              | What it adds                                                                     |
+|--------------------------------|-------------------|----------------------------------------------------------------------------------|
+| **YetAnotherConfigLib (YACL)** | Required (client) | In-game config screen                                                            |
+| **Create**                     | Optional          | Windmills react to real wind (speed & direction); weather data on Display Boards |
+| **Serene Seasons**             | Optional          | Season-aware weather types, temperature & dew point                              |
+| **JEI**                        | Optional (client) | Calibration Bench recipes in the recipe viewer                                   |
+| **Iris Shaders**               | Incompatible      | Some shaders may be incompatible with the way that AW render its fog             |
+
 
 ---
 
@@ -154,11 +194,10 @@ All commands live under `/aw`. Server commands require permission level 2 (opera
 | `/aw rainbow spawn\|clear` | Spawn or remove rainbows |
 | `/aw debug` | Toggle the debug overlay |
 
-**Client (run locally, no server needed):**
+**Client:**
 
 | Command | Description |
 |---|---|
-| `/aw map` | Open the location picker for real-weather mode |
 | `/aw reset` | Clear the client's cached weather data |
 
 ---
@@ -199,7 +238,30 @@ Registering **custom weather types** from another mod is not supported yet - pla
 
 ## License
 
-Released under the **MIT License**. See [LICENSE](LICENSE).
+Released under the **MIT License**. See [LICENSE](LICENSE.txt).
+
+## Third-Party Software Notices :
+
+This software embeds the following third-party libraries via JarJar:
+
+1. **[Registrate](https://github.com/tterrag1098/Registrate)**
+    - Authors: tterrag, Create Mod Team
+    - License: [MPL-2.0 License](licenses/REGISTRATE-LICENSE.txt)
+
+2. **[Veil](https://github.com/FoundryMC/Veil)**
+    - Authors: Foundry Systems
+    - License: [GNU Lesser General Public License v3.0 (LGPL-3.0)](licenses/VEIL-LICENSE.txt)
+
+3. **[Ponder](https://github.com/Creators-of-Create/Ponder)**
+    - Authors: Create Mod Team
+    - License: [MIT License](licenses/PONDER-LICENSE.txt) 
+
+4. **[Flywheel](https://github.com/Engine-Room/Flywheel)**
+     - Authors: Create Mod Team
+     - License: [MIT License](licenses/FLYWHEEL-LICENSE.md)
+
+The respective licenses and copyright notices for these libraries apply.
+See included files for full license texts where applicable.
 
 ## Credits
 

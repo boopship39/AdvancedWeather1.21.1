@@ -12,7 +12,7 @@ import net.antopfr.advancedweather.util.ValueColors;
 import net.antopfr.advancedweather.weather.WeatherTypes;
 import net.antopfr.advancedweather.weather.FeelsLikeCalculation;
 import net.antopfr.advancedweather.weather.effect.global.wind.WindSpeedCalculation;
-import net.createmod.catnip.utility.animation.LerpedFloat;
+import net.createmod.catnip.animation.LerpedFloat;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;

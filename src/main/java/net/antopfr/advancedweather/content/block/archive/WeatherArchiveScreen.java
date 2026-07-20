@@ -5,7 +5,7 @@ import net.antopfr.advancedweather.config.AWCommonConfig;
 import net.antopfr.advancedweather.content.report.WeatherRecord;
 import net.antopfr.advancedweather.util.ValueColors;
 import net.antopfr.advancedweather.weather.WeatherTypes;
-import net.createmod.catnip.utility.animation.LerpedFloat;
+import net.createmod.catnip.animation.LerpedFloat;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;

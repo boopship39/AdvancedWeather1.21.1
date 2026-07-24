@@ -20,7 +20,7 @@ logoFile="docs/images/logo8.png"
 authors="Antopfr"
 
 description='''
-Adds lots of vanilla-friendly weather types, for all dimensions!
+Adds lots of vanilla-friendly weather types and an entire atmospheric system, for all dimensions!
 '''
 
 [[mixins]]
@@ -65,7 +65,7 @@ config = "advancedweather.mixins.json"
     side="BOTH"
 
 [[dependencies.${mod_id}]]
-    modId="simulated"
+    modId="sable"
     type="optional"
     versionRange="[*,)"
     ordering="NONE"

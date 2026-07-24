@@ -2,6 +2,7 @@ package net.antopfr.advancedweather.content.item.almanac;
 
 import net.antopfr.advancedweather.content.item.AWDataComponents;
 import net.antopfr.advancedweather.content.report.WeatherRecord;
+import net.antopfr.advancedweather.util.Key;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -40,15 +41,17 @@ public class WeatherAlmanacItem extends Item {
                                 @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
         List<WeatherRecord> records = getRecords(stack);
         if (records.isEmpty()) {
-            tooltip.add(Component.literal("§8Empty - craft with weather reports to fill"));
+            tooltip.add(Component.translatable("advancedweather.almanac.empty"));
             return;
         }
-        tooltip.add(Component.literal("§7Contains §f" + records.size() + "§7 report"
+        tooltip.add(Component.literal(Key.c("§7", "advancedweather.almanac.contains")
+                + " §f" + records.size() + "§7 "
+                + Key.t("advancedweather.almanac.report")
                 + (records.size() > 1 ? "s" : "")));
         long firstDay = records.getFirst().gameTime() / 24000L;
         long lastDay = records.getLast().gameTime() / 24000L;
         tooltip.add(Component.literal(firstDay == lastDay
-                ? "§8Day " + firstDay
-                : "§8Day " + firstDay + " - Day " + lastDay));
+                ? Key.c("§8", "advancedweather.almanac.day") + " " + firstDay
+                : Key.c("§8", "advancedweather.almanac.day") + firstDay + " - " + Key.t("advancedweather.almanac.day") + " " + lastDay));
     }
 }

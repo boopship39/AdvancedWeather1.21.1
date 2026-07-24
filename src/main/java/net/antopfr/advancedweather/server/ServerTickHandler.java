@@ -114,7 +114,7 @@ public class ServerTickHandler {
         PacketDistributor.sendToPlayer(player, new PressureSyncPacket(
                 a.getPressure(), a.getPressureVel(), forecast.getPressure(),
                 a.getCategory(level).name(),
-                predictedNext.weatherName(), predictedIn30.weatherName(),
+                predictedNext.name(), predictedIn30.name(),
                 a.getWindIntensity(), a.getMode().name(),
                 confidenceNext, confidenceIn30));
         PacketDistributor.sendToPlayer(player, new TemperatureSyncPacket(

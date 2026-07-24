@@ -1,11 +1,12 @@
 package net.antopfr.advancedweather.client;
 
+import net.antopfr.advancedweather.client.cloud.CloudState;
 import net.antopfr.advancedweather.client.debug.WeatherDebugOverlay;
 import net.antopfr.advancedweather.client.debug.WeatherHistoryDebug;
 import net.antopfr.advancedweather.client.debug.WeatherTransitionDebug;
 import net.antopfr.advancedweather.client.state.ClientWeatherState;
 import net.antopfr.advancedweather.util.AWKeys;
-import net.antopfr.advancedweather.util.EndSkyState;
+import net.antopfr.advancedweather.client.render.EndSkyHandler;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -26,7 +27,8 @@ public class ClientTickHandler {
 
         ClientLocalHistory.tick(mc.level.getGameTime());
 
-        EndSkyState.tick();
+        CloudState.tick();
+        EndSkyHandler.tick();
 
         if (AWKeys.HISTORY_KEY.consumeClick() && WeatherDebugOverlay.isEnabled()) {
             mc.setScreen(new WeatherHistoryDebug());

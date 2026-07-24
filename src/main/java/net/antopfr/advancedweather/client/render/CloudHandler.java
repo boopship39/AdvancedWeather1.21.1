@@ -1,10 +1,10 @@
-package net.antopfr.advancedweather.util;
+package net.antopfr.advancedweather.client.render;
 
 import net.antopfr.advancedweather.client.state.ClientWeatherState;
 import net.antopfr.advancedweather.weather.WeatherTypes;
 import net.minecraft.resources.ResourceLocation;
 
-public class CloudUtil {
+public class CloudHandler {
     private static final ResourceLocation AW_CLOUDS_CLOUDY =
             ResourceLocation.fromNamespaceAndPath("advancedweather", "textures/environment/clouds_cloudy.png");
     private static final ResourceLocation AW_CLOUDS_SCATTERED =

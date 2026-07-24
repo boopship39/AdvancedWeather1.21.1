@@ -117,7 +117,7 @@ public class ClientAtmosphereState {
     public static float getTempOffset() { return tempOffset; }
 
     private static WeatherTypes clientWeather() {
-        return ClientWeatherState.getCurrentWeather(); // adapte si ton accès diffère
+        return ClientWeatherState.getCurrentWeather();
     }
 
     public static float getLocalPressureAt(net.minecraft.world.level.Level level, net.minecraft.core.BlockPos pos) {
@@ -129,7 +129,7 @@ public class ClientAtmosphereState {
         float biomeOffset = 0f;
         var biomeKey = level.getBiome(pos).unwrapKey().map(ResourceKey::location).orElse(null);
         if (biomeKey != null) {
-            biomeOffset = BiomeTemperatureData.getBiomeOffset(biomeKey);   // déjà relatif
+            biomeOffset = BiomeTemperatureData.getBiomeOffset(biomeKey);
         }
         float deltaY = pos.getY() - 64f;
         float localT = (temperature + biomeOffset) - (deltaY * LAPSE_RATE_TEMP);

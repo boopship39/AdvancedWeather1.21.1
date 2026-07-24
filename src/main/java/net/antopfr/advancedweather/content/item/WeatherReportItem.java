@@ -22,7 +22,7 @@ public class WeatherReportItem extends Item {
                                 @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
         WeatherRecord r = stack.get(AWDataComponents.WEATHER_RECORD.get());
         if (r == null) {
-            tooltip.add(Component.literal("§8Blank report"));
+            tooltip.add(Component.translatable("advancedweather.report.blank"));
             return;
         }
 
@@ -31,7 +31,7 @@ public class WeatherReportItem extends Item {
         int minutes = (int) ((r.gameTime() % 1000) * 60 / 1000);
         tooltip.add(Component.literal(String.format("§7Day %d, %02d:%02d", day, hours, minutes)));
 
-        tooltip.add(Component.literal("§f" + r.weatherType().weatherName()));
+        tooltip.add(Component.literal("§f" + r.weatherType().displayName()));
 
         if (r.hasTemperature()) {
             float t = r.temperature();

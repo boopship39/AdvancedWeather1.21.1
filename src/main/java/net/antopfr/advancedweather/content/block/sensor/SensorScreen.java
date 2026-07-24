@@ -1,6 +1,7 @@
 package net.antopfr.advancedweather.content.block.sensor;
 
 import net.antopfr.advancedweather.client.state.ClientAtmosphereState;
+import net.antopfr.advancedweather.util.Key;
 import net.antopfr.advancedweather.util.UnitFormat;
 import net.antopfr.advancedweather.util.ValueColors;
 import net.antopfr.advancedweather.weather.effect.global.wind.WindSpeedCalculation;
@@ -56,7 +57,7 @@ public class SensorScreen extends Screen {
 
         switch (sensor.getSensorType()) {
             case BAROMETER -> {
-                title = "Barometer";
+                title = Key.t("block.advancedweather.barometer");;
                 float p = ClientAtmosphereState.getLocalPressureAt(level, pos);
                 value = String.format("%.1f hPa", p);
                 valueColor = 0xFFFFFF;
@@ -64,21 +65,21 @@ public class SensorScreen extends Screen {
                 sub = trend > 0.002f ? "§a↑ rising" : trend < -0.002f ? "§c↓ falling" : "§7→ steady";
             }
             case THERMOMETER -> {
-                title = "Thermometer";
+                title = Key.t("block.advancedweather.thermometer");
                 float t = ClientAtmosphereState.getLocalTemperatureAt(level, pos);
                 value = UnitFormat.temperature(t);
                 valueColor = ValueColors.temperature(t);
                 sub = "§7at Y=" + pos.getY();
             }
             case HYGROMETER -> {
-                title = "Hygrometer";
+                title = Key.t("block.advancedweather.hygrometer");;
                 float h = ClientAtmosphereState.getLocalHumidityAt(level, pos);
                 value = String.format("%.0f%%", h);
                 valueColor = ValueColors.humidity(h);
                 sub = "§7[" + ValueColors.humidityLabel(h) + "]";
             }
             case ANEMOMETER -> {
-                title = "Anemometer";
+                title = Key.t("block.advancedweather.anemometer");;
                 float wind = ClientAtmosphereState.getWindIntensity();
                 float kmh = wind * wind * 120f;
                 value = UnitFormat.wind(kmh);

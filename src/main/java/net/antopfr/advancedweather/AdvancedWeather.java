@@ -1,6 +1,8 @@
 package net.antopfr.advancedweather;
 
 import net.antopfr.advancedweather.compat.create.AWDisplaySources;
+import net.antopfr.advancedweather.compat.sable.ContraptionWindCompat;
+import net.antopfr.advancedweather.compat.sable.SableIntegration;
 import net.antopfr.advancedweather.config.AWClientConfig;
 import net.antopfr.advancedweather.config.AWCommonConfig;
 import net.antopfr.advancedweather.content.AWCreativeTab;
@@ -38,6 +40,9 @@ public class AdvancedWeather {
 
         if (ModLoaded.isCreateLoaded()) {
             eb.addListener(AWDisplaySources::onRegisterEvent);
+        }
+        if (ModLoaded.isSableLoaded()) {
+            SableIntegration.init(eb);
         }
 
         NeoForge.EVENT_BUS.addListener(AWCommand::onRegisterCommands);

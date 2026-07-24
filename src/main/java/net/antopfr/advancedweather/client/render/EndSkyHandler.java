@@ -1,11 +1,11 @@
-package net.antopfr.advancedweather.util;
+package net.antopfr.advancedweather.client.render;
 
 import net.antopfr.advancedweather.client.state.ClientWeatherState;
 import net.antopfr.advancedweather.weather.WeatherTypes;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 
-public class EndSkyState {
+public class EndSkyHandler {
     private static float r = 1f, g = 1f, b = 1f;
     private static float tr = 1f, tg = 1f, tb = 1f;
     private static int retargetCooldown = 0;

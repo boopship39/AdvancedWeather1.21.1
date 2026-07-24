@@ -5,7 +5,7 @@ import net.neoforged.fml.ModList;
 public class ModLoaded {
     public static boolean CREATE = modLoaded("create");
     public static boolean SERENESEASONS = modLoaded("sereneseasons");
-    public static boolean SIMULATED = modLoaded("simulated");
+    public static boolean SABLE = modLoaded("sable");
 
     public static boolean isCreateLoaded() {
         return CREATE;
@@ -13,8 +13,8 @@ public class ModLoaded {
     public static boolean isSereneSeasonsLoaded() {
         return SERENESEASONS;
     }
-    public static boolean isSimulatedLoaded() {
-        return SIMULATED;
+    public static boolean isSableLoaded() {
+        return SABLE;
     }
 
     private static boolean modLoaded(String mod) {
@@ -28,8 +28,8 @@ public class ModLoaded {
         if (ModLoaded.isSereneSeasonsLoaded()) {
             AWLogger.AW.info("[AdvancedWeather] Serene Seasons detected, compatibility enabled");
         }
-        if (ModLoaded.isSimulatedLoaded()) {
-            AWLogger.AW.info("[AdvancedWeather] Simulated detected, compatibility enabled");
+        if (ModLoaded.isSableLoaded()) {
+            AWLogger.AW.info("[AdvancedWeather] Sable detected, compatibility enabled");
         }
     }
 }

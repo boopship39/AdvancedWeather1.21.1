@@ -1,8 +1,7 @@
 # Advanced Weather
 
-*A physically-grounded weather overhaul for Minecraft - 28 weather types across all three dimensions, a real atmospheric simulation, and a full progression of craftable weather instruments.*
+*A physically-grounded weather overhaul for Minecraft: 28 weather types across all three dimensions, a real atmospheric simulation, and a full progression of craftable weather instruments.*
 
-<!-- Badges: replace the URLs once the project is published -->
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-brightgreen)]()
 [![Loader](https://img.shields.io/badge/Loader-NeoForge-orange)]()
 [![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE.txt)
@@ -15,7 +14,7 @@
 
 ## What is Advanced Weather?
 
-Vanilla Minecraft has three weather states: clear, rain, and thunder. Advanced Weather replaces that with a living atmosphere. Air pressure, temperature, dew point and wind are simulated continuously and drive **28 distinct weather types** - each with its own particles, fog, sky, sound and gameplay effects. Weather doesn't teleport between states: it *transitions* based on the current atmospheric conditions, and you can actually **read, predict and archive** it using an in-world progression of scientific instruments you build yourself.
+Vanilla Minecraft has three weather states: clear, rain, and thunder. Advanced Weather replaces that with a living atmosphere. Air pressure, temperature, dew point and wind are simulated continuously and drive **28 distinct weather types**, each with its own particles, fog, sky, sound and gameplay effects. Weather doesn't teleport between states: it *transitions* based on the current atmospheric conditions, and you can actually **read, predict and archive** it using an in-world progression of scientific instruments you build yourself.
 
 You can let it run procedurally, sync it to **real-world weather** at any location on Earth, or take full manual control.
 
@@ -37,7 +36,6 @@ Runs a continuous model:
 Everything is per-dimension and saved with the world.
 
 ### 🌦️ 28 weather types across three dimensions
-
 ## **Overworld (17):** 
 #### Clear · Sunny · Cloudy · Overcast · Mist · Fog · Dense Fog · Drizzle · Light Rain · Heavy Rain · Freezing Rain · Thunderstorm · Snow · Blizzard · Hail · Windy · Sandstorm
 <p>
@@ -95,7 +93,7 @@ Each weather brings its own hand-tuned visuals and audio:
 
 ### 🔬 Instruments & progression
 
-Advanced Weather is also a **tech-progression mod**. You can't just read the weather - you have to build the tools.
+Advanced Weather is also a **tech-progression mod**. You can't just read the weather, you have to build the tools.
 
 - **New ores & materials:** Cinnabar (→ washed dust → distilled into **Mercury**) and Bauxite (→ Alumina → carbothermic reduction → **Aluminum**, ingots, nuggets and sheets). A **Hammer** lets you crush and press by hand (or use Create's crushing wheels).
 - **Four core instruments**, each built from a calibrated heart: **Thermometer** (mercury vial), **Barometer** (spring), **Hygrometer** (sensitive fiber), **Anemometer** (cup rotor).
@@ -150,14 +148,18 @@ A **YACL config screen** is provided for in-game editing.
 
 ## Compatibility
 
-| Mod                            | Type              | What it adds                                                                     |
-|--------------------------------|-------------------|----------------------------------------------------------------------------------|
-| **YetAnotherConfigLib (YACL)** | Required (client) | In-game config screen                                                            |
-| **Create**                     | Optional          | Windmills react to real wind (speed & direction); weather data on Display Boards |
-| **Serene Seasons**             | Optional          | Season-aware weather types, temperature & dew point                              |
-| **JEI**                        | Optional (client) | Calibration Bench recipes in the recipe viewer                                   |
-| **Iris Shaders**               | Incompatible      | Some shaders may be incompatible with the way that AW render its fog             |
+| Mod                                 | Type              | What it adds                                                                     |
+|-------------------------------------|-------------------|----------------------------------------------------------------------------------|
+| **YetAnotherConfigLib (YACL)**      | Required (client) | In-game config screen                                                            |
+| **Create**                          | Optional          | Windmills react to real wind (speed & direction); weather data on Display Boards |
+| **Create: Aeronautics / Simulated** | Optional          | Wind pushes simulated contraptions                                               |
+| **Serene Seasons**                  | Optional          | Season-aware weather types, temperature & dew point                              |
+| **JEI**                             | Optional (client) | Calibration Bench recipes in the recipe viewer                                   |
+| **Iris Shaders**                    | Incompatible      | Some shaders may be incompatible with the way that AW render its fog             |
 
+<p>
+  <img src="docs/images/wind.png" alt="Aeronautics compatibility" width="75%">
+</p>
 
 ---
 

@@ -2,8 +2,13 @@ package net.antopfr.advancedweather.client.event;
 
 import net.antopfr.advancedweather.client.state.ClientWeatherState;
 import net.antopfr.advancedweather.weather.WeatherTypes;
+import net.antopfr.advancedweather.weather.maps.BiomeFogColors;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -17,52 +22,66 @@ public class FogHandler {
         Minecraft mc = Minecraft.getInstance();
         if (mc.level == null) return;
 
+        float renderDistance = event.getRenderer().getRenderDistance();
+
         if (mc.level.dimension().equals(Level.END)) {
-            float renderDistance = event.getRenderer().getRenderDistance();
             event.setNearPlaneDistance(renderDistance);
             event.setFarPlaneDistance(renderDistance * 10f);
             event.setCanceled(true);
             return;
         }
 
-        WeatherTypes prev = ClientWeatherState.getPreviousWeather();
-        WeatherTypes current = ClientWeatherState.getCurrentWeather();
+        ClientWeatherState.fogDistanceLerp.update(
+                ClientWeatherState.getPreviousWeather(),
+                ClientWeatherState.getCurrentWeather(),
+                ClientWeatherState.getSmoothedTransitionProgress((float) event.getPartialTick()),
+                renderDistance);
 
-        float partialTick = (float) event.getPartialTick();
-        float progress = ClientWeatherState.getSmoothedTransitionProgress(partialTick);
-        float renderDistance = event.getRenderer().getRenderDistance();
-
-        ClientWeatherState.fogDistanceLerp.update(prev, current, progress, renderDistance);
-
-        if (!ClientWeatherState.fogDistanceLerp.shouldRenderCustomFog()) {
-            return;
-        }
+        if (!ClientWeatherState.fogDistanceLerp.shouldRenderCustomFog()) return;
 
         event.setNearPlaneDistance(ClientWeatherState.fogDistanceLerp.getCurrentNear());
         event.setFarPlaneDistance(ClientWeatherState.fogDistanceLerp.getCurrentFar());
         event.setCanceled(true);
     }
 
+    private static Vec3 smoothedFog = null;
+
     @SubscribeEvent
     public static void onFogColor(ViewportEvent.ComputeFogColor event) {
         Minecraft mc = Minecraft.getInstance();
         if (mc.level == null) return;
 
-        if (mc.level.dimension().equals(Level.END)) {
-            return; // laisse vanilla gérer — mais voir étape 3 pour forcer encore plus
+        WeatherTypes current  = ClientWeatherState.getCurrentWeather();
+        WeatherTypes previous = ClientWeatherState.getPreviousWeather();
+
+        Vec3 vanilla = new Vec3(event.getRed(), event.getGreen(), event.getBlue());
+
+        BlockPos pos = BlockPos.containing(event.getCamera().getPosition());
+        ResourceLocation biome = mc.level.getBiome(pos).unwrapKey()
+                .map(ResourceKey::location).orElse(null);
+
+        Vec3 from = previous.hasFog() ? toVec(BiomeFogColors.getColor(previous, biome)) : vanilla;
+        Vec3 to   = current.hasFog()  ? toVec(BiomeFogColors.getColor(current, biome))  : vanilla;
+
+        float t = ClientWeatherState.getSmoothedTransitionProgress((float) event.getPartialTick());
+        Vec3 target = from.lerp(to, t);
+
+        if (smoothedFog == null) {
+            smoothedFog = target;
+        } else {
+            smoothedFog = smoothedFog.lerp(target, 0.03);
         }
 
-        WeatherTypes current = ClientWeatherState.getCurrentWeather();
-        if (!current.hasFog()) return;
+        float darken = mc.level.getSkyDarken((float) event.getPartialTick());
 
-        float brightness = mc.level.getSkyDarken((float) event.getPartialTick());
-        brightness = 0.3f + brightness * 0.6f;
-        applyFogColor(event, ClientWeatherState.fogColorLerp.getCurrentColor(), brightness);
+        event.setRed((float) smoothedFog.x * darken);
+        event.setGreen((float) smoothedFog.y * darken);
+        event.setBlue((float) smoothedFog.z * darken);
     }
 
-    private static void applyFogColor(ViewportEvent.ComputeFogColor event, int color, float brightness) {
-        event.setRed(((color >> 16) & 0xFF) / 255.0f * brightness);
-        event.setGreen(((color >> 8) & 0xFF) / 255.0f * brightness);
-        event.setBlue((color & 0xFF) / 255.0f * brightness);
+    private static Vec3 toVec(int rgb) {
+        return new Vec3(((rgb >> 16) & 0xFF) / 255.0,
+                ((rgb >> 8)  & 0xFF) / 255.0,
+                ( rgb        & 0xFF) / 255.0);
     }
 }

@@ -28,7 +28,7 @@ public class WeatherTransitionDebug extends Screen {
         int y = PADDING + 20;
 
         g.drawCenteredString(this.font,
-                "§bCurrent: §f" + ClientWeatherState.getCurrentWeather().weatherName(),
+                "§bCurrent: §f" + ClientWeatherState.getCurrentWeather().name(),
                 this.width / 2, 10, 0xFFFFFF);
 
         List<TransitionProbabilitiesPacket.Entry> probabilities = ClientTransitionState.getProbabilities();
@@ -39,7 +39,7 @@ public class WeatherTransitionDebug extends Screen {
         }
 
         for (TransitionProbabilitiesPacket.Entry entry : probabilities) {
-            String label = entry.type().weatherName();
+            String label = entry.type().name();
             float percent = entry.probabilityPercent();
 
             g.drawString(this.font, label, x, y + 3, 0xFFFFFF);

@@ -27,10 +27,10 @@ public class TemperatureAchievement {
 
         float localTemp = ClientAtmosphereState.getLocalTemperature();
 
-        if (localTemp <= -69.0f) {
+        if (localTemp <= -60.0f) {
             PacketDistributor.sendToServer(new TempAchievementPacket(false));
         }
-        else if (localTemp >= 148.0f) {
+        else if (localTemp >= 110.0f) {
             PacketDistributor.sendToServer(new TempAchievementPacket(true));
         }
     }

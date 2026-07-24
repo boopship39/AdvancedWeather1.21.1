@@ -67,6 +67,16 @@ public class AWConfigScreen {
                         .build())
                 .build();
 
+        // CLOUDS
+        ConfigCategory clouds = ConfigCategory.createBuilder()
+                .name(Component.literal("Clouds"))
+                .option(Option.<Integer>createBuilder()
+                        .name(Component.literal("Cloud Render Distance"))
+                        .binding(384, () -> config.cloudRenderDistance, v -> config.cloudRenderDistance = v)
+                        .controller(opt -> IntegerSliderControllerBuilder.create(opt).range(128, 768).step(64))
+                        .build())
+                .build();
+
         // WIND LINES
         ConfigCategory windLines = ConfigCategory.createBuilder()
                 .name(Component.literal("Wind Lines"))
@@ -561,6 +571,7 @@ public class AWConfigScreen {
         // CLIENT categories
         builder.category(weatherHud);
         builder.category(units);
+        builder.category(clouds);
         builder.category(windLines);
         builder.category(blizzard);
         builder.category(sandParticles);
@@ -725,6 +736,13 @@ public class AWConfigScreen {
                 .option(Option.<Double>createBuilder()
                         .name(Component.literal("Windmill Speed Scale Factor"))
                         .binding(0.3, () -> common.windmillSpeedScaleFactor, v -> common.windmillSpeedScaleFactor = v)
+                        .controller(opt -> DoubleFieldControllerBuilder.create(opt).min(0.0).max(5.0))
+                        .build())
+                .option(bool("Wind Pushes Contraptions", "Aeronautics/Simulated: wind pushes flying contraptions", true,
+                        () -> common.windAffectsContraptions, v -> common.windAffectsContraptions = v))
+                .option(Option.<Double>createBuilder()
+                        .name(Component.literal("Contraption Wind Strength"))
+                        .binding(1.0, () -> common.contraptionWindStrength, v -> common.contraptionWindStrength = v)
                         .controller(opt -> DoubleFieldControllerBuilder.create(opt).min(0.0).max(5.0))
                         .build())
                 .build();

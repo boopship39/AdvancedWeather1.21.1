@@ -93,6 +93,9 @@ public class ValueColors {
     }
 
     public static String humidityLabel(float hum) {
-        return hum < 20f ? "Dry" : hum < 40f ? "Mild" : hum < 70f ? "Humid" : "Saturated";
+        return hum < 20f ? Key.t("advancedweather.humidity_label.dry")
+                : hum < 40f ? Key.t("advancedweather.humidity_label.mild")
+                : hum < 70f ? Key.t("advancedweather.humidity_label.humid")
+                : Key.t("advancedweather.humidity_label.saturated");
     }
 }

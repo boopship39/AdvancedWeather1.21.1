@@ -27,6 +27,9 @@ public class AWClientConfig {
     @SerialEntry public boolean useFahrenheit = false;
     @SerialEntry public boolean useMph = false;
 
+    // clouds
+    @SerialEntry public int cloudRenderDistance = 384;
+
     // wind lines
     @SerialEntry public boolean windBurstEnabled = true;
     @SerialEntry public int windLineMax = 80;

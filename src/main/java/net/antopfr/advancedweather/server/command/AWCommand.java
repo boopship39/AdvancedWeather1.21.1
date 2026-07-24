@@ -54,7 +54,7 @@ public class AWCommand {
         ServerLevel level = ctx.getSource().getLevel();
         WeatherTypes current = WeatherManager.get(level).getCurrentWeather(level);
         ctx.getSource().sendSuccess(
-                () -> Component.translatable("commands.aw.info", current.weatherName()), false);
+                () -> Component.translatable("commands.aw.info", current.displayName()), false);
         return 1;
     }
 
@@ -87,7 +87,7 @@ public class AWCommand {
                     StringBuilder sb = new StringBuilder();
                     for (int i = 0; i < recent.size(); i++) {
                         if (i > 0) sb.append(" §8→ §f");
-                        sb.append(recent.get(i).weatherName());
+                        sb.append(recent.get(i).displayString());
                     }
                     String joined = sb.toString();
                     ctx.getSource().sendSuccess(() -> Component.literal("§6[History] §f" + joined), false);
@@ -164,7 +164,7 @@ public class AWCommand {
                             }
                             WeatherManager.get(level).setCurrentWeather(level, type);
                             ctx.getSource().sendSuccess(
-                                    () -> Component.translatable("commands.aw.set.success", type.weatherName()), true);
+                                    () -> Component.translatable("commands.aw.set.success", type.displayName()), true);
                             return 1;
                         }));
     }
@@ -289,7 +289,7 @@ public class AWCommand {
                                 }
                                 WeatherManager.get(overworld).applyRealWeather(overworld, type);
                                 source.sendSuccess(() -> Component.translatable("commands.aw.refresh.applied",
-                                        type.name() + " (" + type.weatherName() + ")"), false);
+                                        type.name() + " (" + type.displayName() + ")"), false);
                             }));
                     return 1;
                 });

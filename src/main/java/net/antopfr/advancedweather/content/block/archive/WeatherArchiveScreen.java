@@ -3,6 +3,7 @@ package net.antopfr.advancedweather.content.block.archive;
 import net.antopfr.advancedweather.AdvancedWeather;
 import net.antopfr.advancedweather.config.AWCommonConfig;
 import net.antopfr.advancedweather.content.report.WeatherRecord;
+import net.antopfr.advancedweather.util.Key;
 import net.antopfr.advancedweather.util.ValueColors;
 import net.antopfr.advancedweather.weather.WeatherTypes;
 import net.createmod.catnip.animation.LerpedFloat;
@@ -178,7 +179,7 @@ public class WeatherArchiveScreen extends Screen {
 
         g.fill(x, y, x + PANEL_W, y + PANEL_H, ((int) (ease * 0xE8) << 24) | 0x0C1014);
         g.fill(x, y, x + PANEL_W, y + 18, (alpha << 24) | 0x1E2630);
-        g.drawCenteredString(font, "§lWeather Archive", x + PANEL_W / 2, y + 5,
+        g.drawCenteredString(font, "§l" + Key.t("block.advancedweather.weather_archive"), x + PANEL_W / 2, y + 5,
                 withAlpha(0xFFFFFF, alpha));
 
         List<WeatherRecord> records = archive.getRecords();
@@ -195,7 +196,7 @@ public class WeatherArchiveScreen extends Screen {
             if (age > outdated) {
                 WeatherTypes first = WeatherTypes.values()[top.getFirst()[0]];
                 drawWeatherIcon(g, first, x + 8, forecastLineY - 2, 12);
-                g.drawString(font, "§8Next: §m" + first.weatherName() + "§r §c[outdated]",
+                g.drawString(font, "§8Next: §m" + first.displayString() + "§r §c[outdated]",
                         x + 24, forecastLineY, withAlpha(0x888888, alpha), true);
             } else {
                 int tx = x + 8;
@@ -210,7 +211,7 @@ public class WeatherArchiveScreen extends Screen {
                     drawWeatherIcon(g, type, tx, forecastLineY - 2, 12);
                     tx += 14;
                     String text = i == 0
-                            ? String.format("%s §8%.0f%%", type.weatherName(), pct)
+                            ? String.format("%s §8%.0f%%", type.displayString(), pct)
                             : String.format("§8%.0f%%", pct);
                     g.drawString(font, text, tx, forecastLineY,
                             withAlpha(i == 0 ? 0xFFFFFF : 0x999999, alpha), true);
@@ -452,7 +453,7 @@ public class WeatherArchiveScreen extends Screen {
         List<Component> lines = new ArrayList<>();
         if (forecast) lines.add(Component.literal("§b§lForecast (projected)"));
         lines.add(Component.literal(String.format("§7Day %d, %02d:%02d", day, hours, minutes)));
-        if (!forecast) lines.add(Component.literal("§f" + r.weatherType().weatherName()));
+        if (!forecast) lines.add(Component.literal("§f" + r.weatherType().displayName()));
 
         if (aggregated != null) {
             lines.add(Component.literal(String.format("§7%s: §favg %.1f %s",
@@ -572,10 +573,10 @@ public class WeatherArchiveScreen extends Screen {
     }
 
     private static String confidenceLabel(float c) {
-        if (c < 0.30f) return "§8uncertain";
-        if (c < 0.55f) return "§7building";
-        if (c < 0.80f) return "§areliable";
-        return "§2high";
+        if (c < 0.30f) return Key.c("§8", "advancedweather.uncertain");
+        if (c < 0.55f) return Key.c("§7", "advancedweather.building");
+        if (c < 0.80f) return Key.c("§a", "advancedweather.reliable");
+        return Key.c("§2", "advancedweather.high");
     }
 
     private static int confidenceColor(float c) {

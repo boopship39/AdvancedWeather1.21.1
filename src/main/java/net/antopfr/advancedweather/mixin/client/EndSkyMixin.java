@@ -1,7 +1,7 @@
 package net.antopfr.advancedweather.mixin.client;
 
 import net.antopfr.advancedweather.client.state.ClientWeatherState;
-import net.antopfr.advancedweather.util.EndSkyState;
+import net.antopfr.advancedweather.client.render.EndSkyHandler;
 import net.antopfr.advancedweather.weather.WeatherTypes;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.util.Mth;
@@ -23,9 +23,9 @@ public class EndSkyMixin {
             return original;
         }
         int a = 0xFF;
-        int r = (int) Mth.clamp(EndSkyState.red()   * 40f, 0, 255);
-        int g = (int) Mth.clamp(EndSkyState.green() * 42f, 0, 255);
-        int b = (int) Mth.clamp(EndSkyState.blue()  * 70f, 0, 255);
+        int r = (int) Mth.clamp(EndSkyHandler.red()   * 40f, 0, 255);
+        int g = (int) Mth.clamp(EndSkyHandler.green() * 42f, 0, 255);
+        int b = (int) Mth.clamp(EndSkyHandler.blue()  * 70f, 0, 255);
         return (a << 24) | (r << 16) | (g << 8) | b;
     }
 }

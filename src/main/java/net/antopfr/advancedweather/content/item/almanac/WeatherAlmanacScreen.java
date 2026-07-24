@@ -2,6 +2,7 @@ package net.antopfr.advancedweather.content.item.almanac;
 
 import net.antopfr.advancedweather.AdvancedWeather;
 import net.antopfr.advancedweather.content.report.WeatherRecord;
+import net.antopfr.advancedweather.util.Key;
 import net.antopfr.advancedweather.util.ValueColors;
 import net.antopfr.advancedweather.weather.WeatherTypes;
 import net.antopfr.advancedweather.weather.effect.global.wind.WindSpeedCalculation;
@@ -244,7 +245,7 @@ public class WeatherAlmanacScreen extends Screen {
             int px = pageContentX(true);
             int py = by + PAGE_PAD_TOP;
 
-            g.drawString(font, "§oThis almanac is empty", px + 2, py + TOC_TITLE_Y, INK_SOFT, false);
+            g.drawString(font, Key.c("§o", "advancedweather.almanac.empty_screen"), px + 2, py + TOC_TITLE_Y, INK_SOFT, false);
 
             return;
         }
@@ -330,7 +331,7 @@ public class WeatherAlmanacScreen extends Screen {
         int py = bookTop() + PAGE_PAD_TOP;
         int contentW = pageContentWidth();
 
-        g.drawString(font, "Contents", px + 2, py + TOC_TITLE_Y, INK_DARK, false);
+        g.drawString(font, Key.t("advancedweather.almanac.contents"), px + 2, py + TOC_TITLE_Y, INK_DARK, false);
 
         int shown = Math.min(records.size(), TOC_MAX_LINES);
         for (int i = 0; i < shown; i++) {
@@ -344,7 +345,7 @@ public class WeatherAlmanacScreen extends Screen {
             int hours = (int) ((r.gameTime() + 6000) / 1000 % 24);
             int minutes = (int) ((r.gameTime() % 1000) * 60 / 1000);
             String entry = String.format("Day %d, %02d:%02d - %s",
-                    day, hours, minutes, r.weatherType().weatherName());
+                    day, hours, minutes, r.weatherType().displayString());
             if (font.width(entry) > contentW - 12) {
                 entry = font.plainSubstrByWidth(entry, contentW - 18) + "…";
             }
@@ -394,25 +395,25 @@ public class WeatherAlmanacScreen extends Screen {
                 centerX, py + 2, INK_DARK);
 
         drawWeatherIcon(g, r.weatherType(), centerX - 10, py + 18, 20);
-        drawCentered(g, r.weatherType().weatherName(), centerX, py + 44, INK_DARK);
+        drawCentered(g, r.weatherType().displayString(), centerX, py + 44, INK_DARK);
 
         g.fill(px + 16, py + 58, px + contentW - 16, py + 59, 0x30000000);
 
         int line = py + 70;
         int labelX = px + 8;
-        drawValueLine(g, labelX, line, "Temp.",
+        drawValueLine(g, labelX, line, Key.t("advancedweather.temp"),
                 String.format("%.1f °C", r.temperature()),
                 ValueColors.temperature(r.temperature())); line += 15;
 
-        drawValueLine(g, labelX, line, "Pressure",
+        drawValueLine(g, labelX, line, Key.t("advancedweather.pressure"),
                 String.format("%.1f hPa", r.pressure()), INK_DARK); line += 15;
 
-        drawValueLine(g, labelX, line, "Humidity",
+        drawValueLine(g, labelX, line, Key.t("advancedweather.humidity"),
                 String.format("%.0f%% [%s]", r.humidity(), ValueColors.humidityLabel(r.humidity())),
                 ValueColors.humidity(r.humidity())); line += 15;
 
         float kmh = r.windIntensity() * r.windIntensity() * 120f;
-        drawValueLine(g, labelX, line, "Wind",
+        drawValueLine(g, labelX, line, Key.t("advancedweather.wind"),
                 String.format("%.1f km/h", kmh),
                 ValueColors.wind(kmh)); line += 13;
 

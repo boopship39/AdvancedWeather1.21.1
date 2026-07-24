@@ -327,7 +327,7 @@ public class WeatherHistoryDebug extends Screen {
                 hoveredEntry = curr;
                 hoveredX = mouseX;
                 hoveredY = mouseY;
-                hoveredValueText = curr.weather() != null ? curr.weather().weatherName() : "Unknown";
+                hoveredValueText = curr.weather() != null ? curr.weather().name() : "Unknown";
                 hoveredTimeAgo = (currentTick - curr.gameTick()) / 1200;
             }
         }

@@ -29,7 +29,7 @@ public class WeatherStationDisplaySource extends DisplaySource {
 
         if (stats.maxRows() >= 4) {
             return List.of(
-                    Component.literal(weather.weatherName()),
+                    Component.literal(weather.displayString()),
                     Component.literal(String.format("%.1f °C  %.0f%%", temp, hum)),
                     Component.literal(String.format("%.1f hPa", pressure)),
                     Component.literal(String.format("%.0f km/h %s", windKmh,
@@ -37,7 +37,7 @@ public class WeatherStationDisplaySource extends DisplaySource {
             );
         }
         return List.of(Component.literal(String.format("%s %.0f°C %.0fkm/h",
-                weather.weatherName(), temp, windKmh)));
+                weather.displayString(), temp, windKmh)));
     }
 
     @Override

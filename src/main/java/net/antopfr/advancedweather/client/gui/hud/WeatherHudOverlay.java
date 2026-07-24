@@ -34,7 +34,7 @@ public class WeatherHudOverlay {
         GuiGraphics g = event.getGuiGraphics();
         WeatherTypes current = ClientWeatherState.getCurrentWeather();
 
-        String label = current.weatherName();
+        String label = current.displayString();
         String timeLabel = config.weatherHudShowTime ? formatTime(mc.level.getDayTime() % 24000) : null;
 
         int textWidth = Math.max(

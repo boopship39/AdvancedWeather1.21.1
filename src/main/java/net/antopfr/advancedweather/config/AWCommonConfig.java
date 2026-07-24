@@ -82,6 +82,8 @@ public class AWCommonConfig {
 
     // WIND
     @SerialEntry public boolean windSpreadsFire = true;
+    @SerialEntry public boolean windAffectsContraptions = true;
+    @SerialEntry public double contraptionWindStrength = 1.0;
 
     // CREATE
     @SerialEntry public boolean enableCreateWindmillCompat = true;

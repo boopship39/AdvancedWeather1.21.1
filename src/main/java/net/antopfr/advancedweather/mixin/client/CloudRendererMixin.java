@@ -2,7 +2,7 @@ package net.antopfr.advancedweather.mixin.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.antopfr.advancedweather.client.state.ClientWeatherState;
-import net.antopfr.advancedweather.util.CloudUtil;
+import net.antopfr.advancedweather.client.render.CloudHandler;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.resources.ResourceLocation;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,7 +22,7 @@ public class CloudRendererMixin {
             )
     )
     private void aw_bindCloudTexture(CallbackInfo ci) {
-        RenderSystem.setShaderTexture(0, CloudUtil.getCloudTexture());
+        RenderSystem.setShaderTexture(0, CloudHandler.getCloudTexture());
     }
 
     @Inject(
@@ -34,10 +34,10 @@ public class CloudRendererMixin {
             )
     )
     private void aw_bindAndTintClouds(CallbackInfo ci) {
-        ResourceLocation texture = CloudUtil.getCloudTexture();
+        ResourceLocation texture = CloudHandler.getCloudTexture();
         RenderSystem.setShaderTexture(0, texture);
         float aw_partialTick = 0f;
-        if (CloudUtil.isTransitioning()) {
+        if (CloudHandler.isTransitioning()) {
 
             float t = ClientWeatherState.getSmoothedTransitionProgress(aw_partialTick);
             float alpha = t < 0.5f
@@ -47,7 +47,7 @@ public class CloudRendererMixin {
             if (t >= 0.5f) {
                 RenderSystem.setShaderTexture(0, texture);
             } else {
-                RenderSystem.setShaderTexture(0, CloudUtil.getPreviousCloudTexture());
+                RenderSystem.setShaderTexture(0, CloudHandler.getPreviousCloudTexture());
             }
 
             RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, alpha);
@@ -61,7 +61,7 @@ public class CloudRendererMixin {
 
     @Inject(method = "renderClouds", at = @At("HEAD"))
     private void aw_forceCloudRebuild(CallbackInfo ci) {
-        if (CloudUtil.isTransitioning()) {
+        if (CloudHandler.isTransitioning()) {
             this.generateClouds = true;
         }
     }

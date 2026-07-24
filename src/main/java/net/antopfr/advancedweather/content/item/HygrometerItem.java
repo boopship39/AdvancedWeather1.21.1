@@ -31,7 +31,7 @@ public class HygrometerItem extends Item {
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, @NotNull Player player, @NotNull InteractionHand hand) {
         if (level.isClientSide) {
             float hum = ClientAtmosphereState.getLocalHumidity();
-            String hLabel = hum < 20f ? "Dry" : hum < 40f ? "Mild" : hum < 70f ? "Humid" : "Saturated";
+            String hLabel = ValueColors.humidityLabel(hum);
 
             int rgbColor = ValueColors.humidity(hum);
 
@@ -50,7 +50,7 @@ public class HygrometerItem extends Item {
                                 @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
         if (Minecraft.getInstance().level != null) {
             float hum = ClientAtmosphereState.getLocalHumidity();
-            String hLabel = hum < 20f ? "Dry" : hum < 40f ? "Mild" : hum < 70f ? "Humid" : "Saturated";
+            String hLabel = ValueColors.humidityLabel(hum);
             int rgbColor = ValueColors.humidity(hum);
 
             MutableComponent prefix = Component.literal("§7Humidity: ");

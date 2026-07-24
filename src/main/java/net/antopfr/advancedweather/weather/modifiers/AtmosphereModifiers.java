@@ -34,12 +34,12 @@ public class AtmosphereModifiers {
                 yield t * h;
             }
             case FREEZING_RAIN -> {
-                float t = tempC > -2f && tempC < 3f ? 2.0f : 0.1f; // fenêtre étroite
+                float t = tempC > -2f && tempC < 3f ? 2.0f : 0.1f;
                 yield t;
             }
 
             case THUNDERSTORM -> {
-                float t = tempFactor(tempC, 18f, 45f);   // boost si chaud
+                float t = tempFactor(tempC, 18f, 45f);
                 float h = humidityFactor(humidity, 70f, 100f);
                 yield t * h;
             }

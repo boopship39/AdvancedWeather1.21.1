@@ -44,7 +44,6 @@ public class WeatherManager extends SavedData {
     private final Map<WeatherTypes.Dimension, Integer> realWeatherTickTimers = new EnumMap<>(WeatherTypes.Dimension.class);
     private boolean realWeatherWarningLogged = false;
 
-    // Transient: the "most likely next" forecast computed each tick, used to award "Told You So".
     private final Map<WeatherTypes.Dimension, WeatherTypes> lastPredictedNext = new EnumMap<>(WeatherTypes.Dimension.class);
 
     public WeatherManager() {
@@ -170,7 +169,6 @@ public class WeatherManager extends SavedData {
 
             fireWeatherChange(level, dim, previous, next);
 
-            // "Told You So" — the weather that just arrived is the one we forecast last tick.
             if (next != previous && next == lastPredictedNext.get(dim)) {
                 for (ServerPlayer p : level.players()) AWAdvancements.grant(p, "told_you_so");
             }
@@ -205,7 +203,6 @@ public class WeatherManager extends SavedData {
         syncToClients(level, type);
         fireWeatherChange(level, dim, previous, type);
 
-        // "Look Outside" — the world is now driven by real-world weather.
         for (ServerPlayer p : level.players()) AWAdvancements.grant(p, "look_outside");
     }
 
@@ -240,7 +237,6 @@ public class WeatherManager extends SavedData {
         WeatherTypes.Dimension dim = DimensionProfile.getDimension(level);
         OpenMeteo.fetchAsync(config.latitude, config.longitude)
                 .thenAccept(type -> level.getServer().execute(() -> {
-                    // Back on the server thread: reading/writing weather state is now safe.
                     WeatherTypes currentWeather = currentWeathers.get(dim);
                     if (type == null) {
                         if (!realWeatherWarningLogged) {
@@ -344,7 +340,7 @@ public class WeatherManager extends SavedData {
                 a.getPressure(), a.getPressureVel(),
                 forecast.getPressure(),
                 a.getCategory(level).name(),
-                predictedNext.weatherName(), predictedIn30.weatherName(),
+                predictedNext.name(), predictedIn30.name(),
                 a.getWindIntensity(), a.getMode().name(),
                 confidenceNext, confidenceIn30
         ));

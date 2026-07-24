@@ -75,7 +75,6 @@ public class SeekShelterGoal extends Goal {
         mob.getNavigation().stop();
     }
 
-    /** Harsh weather mobs will try to take cover from. */
     private static boolean isShelterWeather(WeatherTypes w) {
         return w == WeatherTypes.HAIL
                 || w == WeatherTypes.BLIZZARD

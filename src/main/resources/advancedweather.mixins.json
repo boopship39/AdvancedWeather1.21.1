@@ -17,6 +17,7 @@
   "client": [
     "client.BiomeClientMixin",
     "client.CloudRendererMixin",
+    "client.DeleteCloudsMixin",
     "client.EndSkyMixin",
     "client.LevelMixin",
     "client.LevelRendererMixin",

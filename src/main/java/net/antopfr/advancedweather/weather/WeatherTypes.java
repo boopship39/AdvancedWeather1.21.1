@@ -1,56 +1,63 @@
 package net.antopfr.advancedweather.weather;
 
+import net.minecraft.network.chat.Component;
+
 public enum WeatherTypes {
 
     // OVERWORLD
-    CLEAR("Clear", false, false, Dimension.OVERWORLD),
-    SUNNY("Sunny", false, false, Dimension.OVERWORLD),
-    CLOUDY("Cloudy", false, false, Dimension.OVERWORLD),
-    OVERCAST("Overcast", false, false, Dimension.OVERWORLD),
-    MIST("Mist", false, false, Dimension.OVERWORLD),
-    DRIZZLE("Drizzle", true, false, Dimension.OVERWORLD),
-    LIGHT_RAIN("Light Rain", true, false, Dimension.OVERWORLD),
-    HEAVY_RAIN("Heavy Rain", true, false, Dimension.OVERWORLD),
-    FREEZING_RAIN("Freezing Rain", true, false, Dimension.OVERWORLD),
-    THUNDERSTORM("Thunderstorm", true, true, Dimension.OVERWORLD),
-    SNOW("Snow", true, false, Dimension.OVERWORLD),
-    BLIZZARD("Blizzard", true, false, Dimension.OVERWORLD),
-    HAIL("Hail", true, false, Dimension.OVERWORLD),
-    FOG("Fog", false, false, Dimension.OVERWORLD),
-    DENSE_FOG("Dense Fog", false, false, Dimension.OVERWORLD),
-    WINDY("Windy", false, false, Dimension.OVERWORLD),
-    SANDSTORM("Sandstorm", false, false, Dimension.OVERWORLD),
+    CLEAR("advancedweather.types.clear", false, false, Dimension.OVERWORLD),
+    SUNNY("advancedweather.types.sunny", false, false, Dimension.OVERWORLD),
+    CLOUDY("advancedweather.types.cloudy", false, false, Dimension.OVERWORLD),
+    OVERCAST("advancedweather.types.overcast", false, false, Dimension.OVERWORLD),
+    MIST("advancedweather.types.mist", false, false, Dimension.OVERWORLD),
+    DRIZZLE("advancedweather.types.drizzle", true, false, Dimension.OVERWORLD),
+    LIGHT_RAIN("advancedweather.types.light_rain", true, false, Dimension.OVERWORLD),
+    HEAVY_RAIN("advancedweather.types.heavy_rain", true, false, Dimension.OVERWORLD),
+    FREEZING_RAIN("advancedweather.types.freezing_rain", true, false, Dimension.OVERWORLD),
+    THUNDERSTORM("advancedweather.types.thunderstorm", true, true, Dimension.OVERWORLD),
+    SNOW("advancedweather.types.snow", true, false, Dimension.OVERWORLD),
+    BLIZZARD("advancedweather.types.blizzard", true, false, Dimension.OVERWORLD),
+    HAIL("advancedweather.types.hail", true, false, Dimension.OVERWORLD),
+    FOG("advancedweather.types.fog", false, false, Dimension.OVERWORLD),
+    DENSE_FOG("advancedweather.types.dense_fog", false, false, Dimension.OVERWORLD),
+    WINDY("advancedweather.types.windy", false, false, Dimension.OVERWORLD),
+    SANDSTORM("advancedweather.types.sandstorm", false, false, Dimension.OVERWORLD),
 
     // NETHER
-    NETHER_CLEAR("Nether Clear", false, false, Dimension.NETHER),
-    BRIMSTONE_STORM("Brimstone Storm", false, false, Dimension.NETHER),
-    LAVA_RAIN("Lava Rain", false, false, Dimension.NETHER),
-    ASH_STORM("Ash Storm", false, false, Dimension.NETHER),
-    NETHERSTORM("Netherstorm", false, true, Dimension.NETHER),
-    HELLFIRE("Hellfire", false, false, Dimension.NETHER),
+    NETHER_CLEAR("advancedweather.types.nether_clear", false, false, Dimension.NETHER),
+    BRIMSTONE_STORM("advancedweather.types.brimstone_storm", false, false, Dimension.NETHER),
+    LAVA_RAIN("advancedweather.types.lava_rain", false, false, Dimension.NETHER),
+    ASH_STORM("advancedweather.types.ash_storm", false, false, Dimension.NETHER),
+    NETHERSTORM("advancedweather.types.netherstorm", false, true, Dimension.NETHER),
+    HELLFIRE("advancedweather.types.hellfire", false, false, Dimension.NETHER),
 
     // END
-    END_CLEAR("End Clear", false, false, Dimension.END),
-    VOID_STORM("Void Storm", false, false, Dimension.END),
-    END_MIST("End Mist", false, false, Dimension.END),
-    CHORUS_GALE("Chorus Gale", false, false, Dimension.END),
-    ENDERSTORM("Enderstorm", false, true, Dimension.END);
+    END_CLEAR("advancedweather.types.end_clear", false, false, Dimension.END),
+    VOID_STORM("advancedweather.types.void_storm", false, false, Dimension.END),
+    END_MIST("advancedweather.types.end_mist", false, false, Dimension.END),
+    CHORUS_GALE("advancedweather.types.chorus_gale", false, false, Dimension.END),
+    ENDERSTORM("advancedweather.types.enderstorm", false, true, Dimension.END);
 
     public enum Dimension { OVERWORLD, NETHER, END }
 
-    private final String    weatherName;
+    private final String    translationKey;
     private final boolean   vanillaRaining;
     private final boolean   vanillaThundering;
     public  final Dimension dimension;
 
-    WeatherTypes(String name, boolean rain, boolean thunder, Dimension dim) {
-        this.weatherName      = name;
-        this.vanillaRaining   = rain;
+    WeatherTypes(String translationKey, boolean rain, boolean thunder, Dimension dim) {
+        this.translationKey = translationKey;
+        this.vanillaRaining = rain;
         this.vanillaThundering = thunder;
-        this.dimension        = dim;
+        this.dimension = dim;
     }
 
-    public String  weatherName()        { return weatherName; }
+    public String translationKey() { return translationKey; }
+
+    public Component displayName() { return Component.translatable(translationKey); }
+
+    public String displayString() { return Component.translatable(translationKey).getString(); }
+
     public boolean isVanillaRaining()   { return vanillaRaining; }
     public boolean isVanillaThundering(){ return vanillaThundering; }
     public Dimension dimension()        { return dimension; }

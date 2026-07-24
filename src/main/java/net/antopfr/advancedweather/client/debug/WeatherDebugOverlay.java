@@ -13,6 +13,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -74,15 +75,15 @@ public class WeatherDebugOverlay {
         y += lineH + 2;
 
         // ── Type météo ───────────────────────────────────────────────────────
-        g.drawString(font, "§7Weather  " + getWeatherColorCode(current) + current.weatherName(),
+        g.drawString(font, "§7Weather  " + getWeatherColorCode(current) + current.name(),
                 x, y, 0xFFFFFF, false);
         y += lineH;
 
         // ── Transition ───────────────────────────────────────────────────────
         if (transition < 1.0f) {
             String pct = String.format("%.0f%%", transition * 100);
-            g.drawString(font, "§7Transition §e" + previous.weatherName()
-                    + " §7→ §f" + current.weatherName()
+            g.drawString(font, "§7Transition §e" + previous.name()
+                    + " §7→ §f" + current.name()
                     + " §8(" + pct + ")", x, y, 0xFFFFFF, false);
         } else {
             g.drawString(font, "§7Transition §astable", x, y, 0xFFFFFF, false);

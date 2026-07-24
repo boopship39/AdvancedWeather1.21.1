@@ -28,7 +28,7 @@ public class AutoSamplerScreen extends Screen {
     private int hoveredPreset = -1;
 
     public AutoSamplerScreen(AutoSamplerBlockEntity sampler) {
-        super(Component.literal("Auto-Sampler"));
+        super(Component.translatable("block.advancedweather.auto_sampler"));
         this.sampler = sampler;
     }
 

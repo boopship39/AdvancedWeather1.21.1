@@ -1,7 +1,7 @@
 package net.antopfr.advancedweather.content.block;
 
 import net.antopfr.advancedweather.client.particle.AWParticles;
-import net.antopfr.advancedweather.content.event.CauldronInteractionsEvent;
+import net.antopfr.advancedweather.server.event.CauldronInteractionsEvent;
 import net.antopfr.advancedweather.content.item.AWItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.cauldron.CauldronInteraction;

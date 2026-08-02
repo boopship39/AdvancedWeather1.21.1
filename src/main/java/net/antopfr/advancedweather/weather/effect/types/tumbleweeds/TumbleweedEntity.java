@@ -58,7 +58,7 @@ public class TumbleweedEntity extends Entity {
             }
         }
 
-        Vec3 wind = WindDirectionCalc.get(level().getDayTime(), 0f);
+        Vec3 wind = WindDirectionCalc.getDirection(level().getDayTime(), 0f);
         float speed = 0.10f + windSpeed;
 
         this.setDeltaMovement(

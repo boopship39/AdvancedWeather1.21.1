@@ -54,6 +54,16 @@
   "item.advancedweather.aluminum_sheet": "Plaque d'aluminium",
   "item.advancedweather.weather_display": "Écran météo",
   "item.advancedweather.wireless_module": "Module sans-fil",
+  "item.advancedweather.dormant_crystal": "Cristal dormant",
+  "item.advancedweather.fire_crystal": "Cristal de feu",
+  "item.advancedweather.frost_crystal": "Cristal de givre",
+  "item.advancedweather.rain_crystal": "Cristal de pluie",
+  "item.advancedweather.clear_crystal": "Cristal de beau temps",
+  "item.advancedweather.seeding_rocket_warm": "Fusée d'encensement de chaud",
+  "item.advancedweather.seeding_rocket_frost": "Fusée d'encensement de froid",
+  "item.advancedweather.seeding_rocket_rain": "Fusée d'encensement de pluie",
+  "item.advancedweather.seeding_rocket_clear": "Fusée d'encensement de beau temps",
+  "item.advancedweather.kite": "Cerf-volant",
 
   "advancedweather.link.sensor_selected": "Capteur sélectionné - maintenant clic-droit sur une station météo",
   "advancedweather.link.station_selected": "Station sélectionnée - maintenant clic-droit sur un capteur",
@@ -94,6 +104,7 @@
   "block.advancedweather.bauxite_soil": "Terre de bauxite",
   "block.advancedweather.bauxite_rock": "Roche de bauxite",
   "block.advancedweather.aluminum_block": "Bloc d'aluminium",
+  "block.advancedweather.amalgamating_aluminum": "Bloc d'aluminium amalgamé",
 
   "fluid_type.advancedweather.mercury": "Mercure",
   "fluid.advancedweather.mercury": "Mercure",
@@ -191,6 +202,8 @@
   "advancedweather.item_tooltip.calibrated_mercury_vial": "✔ Étalonné - prêt pour un thermomètre",
 
   "advancedweather.jei.category.calibration": "Table d'étalonnage",
+  "advancedweather.jei.category.amalgamation": "Amalgamation",
+  "advancedweather.jei.amalgamation.humidity": "Accéléré par l'humidité",
 
   "advancement.advancedweather.root.title": "Advanced Weather",
   "advancement.advancedweather.root.description": "Minez du cinabre ou de la bauxite.",
@@ -297,6 +310,7 @@
   "advancedweather.types.brimstone_storm": "Tempête de soufre",
   "advancedweather.types.lava_rain": "Pluie de lave",
   "advancedweather.types.ash_storm": "Tempête de cendres",
+  "advancedweather.types.hellfire": "Canicule d'enfer",
   "advancedweather.types.netherstorm": "Orage du nether",
   "advancedweather.types.end_clear": "End clair",
   "advancedweather.types.void_storm": "Tempête du vide",
@@ -344,5 +358,27 @@
   "advancedweather.almanac.contents": "Contenu",
 
   "force_group.advancedweather.wind": "Vent",
-  "force_group.advancedweather.wind.desc": "Traînée atmosphérique due aux vents dominants"
+  "force_group.advancedweather.wind.desc": "Traînée atmosphérique due aux vents dominants",
+
+  "item.advancedweather.rain_crystal.tip.summary": "Chargé de l'essence de l'orage",
+  "item.advancedweather.rain_crystal.tip.detail.1": "Lâchez un cristal dormant au sol",
+  "item.advancedweather.rain_crystal.tip.detail.3": "✔ Pendant un orage",
+  "item.advancedweather.rain_crystal.tip.detail.2": "Laissez la foudre le frapper",
+
+  "item.advancedweather.fire_crystal.tip.summary": "Forgé dans la chaleur en fusion",
+  "item.advancedweather.fire_crystal.tip.detail.1": "Jetez un cristal dormant dans la lave",
+  "item.advancedweather.fire_crystal.tip.detail.3": "✔ Dans le Nether, pendant une canicule d'enfer",
+  "item.advancedweather.fire_crystal.tip.detail.2": "Il flotte, puis se transmute",
+
+  "item.advancedweather.frost_crystal.tip.summary": "Rendu gelé par l'abîme",
+  "item.advancedweather.frost_crystal.tip.detail.1": "Lâchez un cristal dormant dans le vide",
+  "item.advancedweather.frost_crystal.tip.detail.3": "✔ Dans l'End, pendant une tempête de l'End",
+  "item.advancedweather.frost_crystal.tip.detail.2": "Le vide le rend, glacé",
+
+  "item.advancedweather.clear_crystal.tip.summary": "Trempé par la lumière pure du soleil",
+  "item.advancedweather.clear_crystal.tip.detail.1": "Relâchez un cristal dormant à la limite de hauteur",
+  "item.advancedweather.clear_crystal.tip.detail.3": "✔ Sous un ciel dégagé",
+  "item.advancedweather.clear_crystal.tip.detail.2": "Il s'élève, se transmute, et retombe",
+
+  "advancedweather.jei.info.kite": "Chaque teinture colore le panneau correspondant à sa position dans la grille. Replacez un cerf-volant au centre avec de nouvelles teintures pour le recolorer."
 }

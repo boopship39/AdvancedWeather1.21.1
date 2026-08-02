@@ -2,9 +2,9 @@ package net.antopfr.advancedweather.content.block.station;
 
 import net.antopfr.advancedweather.config.AWCommonConfig;
 import net.antopfr.advancedweather.content.block.sensor.IWeatherSensor;
-import net.antopfr.advancedweather.content.item.AWDataComponents;
+import net.antopfr.advancedweather.content.AWDataComponents;
 import net.antopfr.advancedweather.content.item.AWItems;
-import net.antopfr.advancedweather.content.report.WeatherRecord;
+import net.antopfr.advancedweather.content.WeatherRecord;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;

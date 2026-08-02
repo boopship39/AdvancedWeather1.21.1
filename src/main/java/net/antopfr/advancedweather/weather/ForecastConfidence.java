@@ -2,6 +2,7 @@ package net.antopfr.advancedweather.weather;
 
 import net.minecraft.util.Mth;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ForecastConfidence {
@@ -28,7 +29,7 @@ public class ForecastConfidence {
         if (weights.length <= 1) return 1.0f;
 
         float[] sorted = weights.clone();
-        java.util.Arrays.sort(sorted);
+        Arrays.sort(sorted);
         float best = sorted[sorted.length - 1];
         float secondBest = sorted[sorted.length - 2];
 

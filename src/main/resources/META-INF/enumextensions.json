@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/client/model/HumanoidModel$ArmPose",
+      "name": "ADVANCEDWEATHER_HOLDING_KITE",
+      "constructor": "(ZLnet/neoforged/neoforge/client/IArmPoseTransformer;)V",
+      "parameters": {
+        "class": "net/antopfr/advancedweather/content/item/kite/KiteArmPose",
+        "field": "POSE_PARAMETERS"
+      }
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 package net.antopfr.advancedweather.content.item;
 
-import net.antopfr.advancedweather.content.report.WeatherRecord;
+import net.antopfr.advancedweather.content.AWDataComponents;
+import net.antopfr.advancedweather.content.WeatherRecord;
 import net.antopfr.advancedweather.util.ValueColors;
 import net.antopfr.advancedweather.weather.effect.global.wind.WindSpeedCalculation;
 import net.minecraft.network.chat.Component;

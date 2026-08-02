@@ -3,7 +3,7 @@ package net.antopfr.advancedweather.content.block.autosampler;
 import net.antopfr.advancedweather.config.AWCommonConfig;
 import net.antopfr.advancedweather.content.block.archive.WeatherArchiveBlockEntity;
 import net.antopfr.advancedweather.content.block.station.WeatherStationBlockEntity;
-import net.antopfr.advancedweather.content.report.WeatherRecord;
+import net.antopfr.advancedweather.content.WeatherRecord;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;

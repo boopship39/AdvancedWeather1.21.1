@@ -293,6 +293,23 @@ public class WeatherManager extends SavedData {
         EffectManager.get(level).setEffects(level, effects);
     }
 
+    // USED BY CLOUD SEEDING
+    public void seed(ServerLevel level, AtmosphericForcing.Bias bias,
+                     float pressurePush, float dewPointPush, float tempOffset,
+                     int forcingDuration) {
+        WeatherTypes.Dimension dim = DimensionProfile.getDimension(level);
+
+        atmospheres.get(dim).applyForcing(
+                pressurePush, dewPointPush, tempOffset, forcingDuration, bias);
+
+        int remaining = weatherTimers.get(dim);
+        if (remaining > 200) {
+            weatherTimers.put(dim, 100 + random.nextInt(200));
+        }
+
+        setDirty();
+    }
+
     public static boolean isCompatibleWithLevel(WeatherTypes type, ServerLevel level) {
         if (level.dimension().equals(Level.NETHER)) return type.isNether();
         if (level.dimension().equals(Level.END))    return type.isEnd();

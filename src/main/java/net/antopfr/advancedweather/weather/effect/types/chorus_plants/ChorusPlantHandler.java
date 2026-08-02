@@ -38,7 +38,7 @@ public class ChorusPlantHandler {
                     AABB.ofSize(player.position(), 96, 96, 96)).size();
             if (existing >= MAX_PER_PLAYER) continue;
 
-            Vec3 wind = WindDirectionCalc.get(level.getDayTime(), 0f);
+            Vec3 wind = WindDirectionCalc.getDirection(level.getDayTime(), 0f);
             double spawnX = player.getX() - wind.x * 24 + (level.random.nextDouble() - 0.5) * 12;
             double spawnZ = player.getZ() - wind.z * 24 + (level.random.nextDouble() - 0.5) * 12;
 

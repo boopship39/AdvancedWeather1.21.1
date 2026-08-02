@@ -1,8 +1,8 @@
 package net.antopfr.advancedweather.client.event;
 
 import net.antopfr.advancedweather.client.state.ClientWeatherState;
+import net.antopfr.advancedweather.weather.BiomeFogData;
 import net.antopfr.advancedweather.weather.WeatherTypes;
-import net.antopfr.advancedweather.weather.maps.BiomeFogColors;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
@@ -60,8 +60,8 @@ public class FogHandler {
         ResourceLocation biome = mc.level.getBiome(pos).unwrapKey()
                 .map(ResourceKey::location).orElse(null);
 
-        Vec3 from = previous.hasFog() ? toVec(BiomeFogColors.getColor(previous, biome)) : vanilla;
-        Vec3 to   = current.hasFog()  ? toVec(BiomeFogColors.getColor(current, biome))  : vanilla;
+        Vec3 from = previous.hasFog() ? toVec(BiomeFogData.getColor(mc.level, previous, biome)) : vanilla;
+        Vec3 to   = current.hasFog()  ? toVec(BiomeFogData.getColor(mc.level, current, biome))  : vanilla;
 
         float t = ClientWeatherState.getSmoothedTransitionProgress((float) event.getPartialTick());
         Vec3 target = from.lerp(to, t);

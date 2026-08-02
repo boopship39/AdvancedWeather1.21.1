@@ -1,7 +1,7 @@
 package net.antopfr.advancedweather.content.block.archive;
 
 import net.antopfr.advancedweather.config.AWCommonConfig;
-import net.antopfr.advancedweather.content.report.WeatherRecord;
+import net.antopfr.advancedweather.content.WeatherRecord;
 import net.antopfr.advancedweather.weather.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -12,7 +12,6 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -112,16 +111,22 @@ public class WeatherArchiveBlockEntity extends BlockEntity {
         int mask = 0;
         float temp = 0f, press = 0f, hum = 0f, wind = 0f;
 
+        DimensionProfile profile = level != null
+                ? DimensionProfile.of(level) : DimensionProfile.FALLBACK;
+
         WeatherRecord[] t = lastThreeWith(WeatherRecord::hasTemperature);
         if (t != null) {
             mask |= WeatherRecord.MASK_TEMPERATURE;
-            temp = extrapolateSeries(t, WeatherRecord::temperature, tNext);
+            temp = Mth.clamp(extrapolateSeries(t, WeatherRecord::temperature, tNext),
+                    profile.tMin - 40f, profile.tMax + 40f);
         }
 
         WeatherRecord[] p = lastThreeWith(WeatherRecord::hasPressure);
         if (p != null) {
             mask |= WeatherRecord.MASK_PRESSURE;
-            press = Mth.clamp(extrapolateSeries(p, WeatherRecord::pressure, tNext), 800f, 1200f);
+            float margin = (profile.pMax - profile.pMin) * 1.5f + 50f;
+            press = Mth.clamp(extrapolateSeries(p, WeatherRecord::pressure, tNext),
+                    Math.max(0f, profile.pMin - margin), profile.pMax + margin);
         }
 
         WeatherRecord[] h = lastThreeWith(WeatherRecord::hasHumidity);
@@ -164,9 +169,9 @@ public class WeatherArchiveBlockEntity extends BlockEntity {
                 .map(WeatherRecord::weatherType)
                 .toList();
 
+        DimensionProfile profile = DimensionProfile.of(serverLevel);
         float normalizedP = Mth.clamp(
-                (projected.pressure() - AtmosphericSystem.P_MIN)
-                        / (AtmosphericSystem.P_MAX - AtmosphericSystem.P_MIN), 0f, 1f);
+                (projected.pressure() - profile.pMin) / (profile.pMax - profile.pMin), 0f, 1f);
 
         float humidity = projected.hasHumidity() ? projected.humidity() : 50f;
 

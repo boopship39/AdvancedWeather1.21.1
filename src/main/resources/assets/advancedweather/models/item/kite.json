@@ -1,0 +1,18 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "advancedweather:item/kite",
+    "layer1": "advancedweather:item/kite_top_left",
+    "layer2": "advancedweather:item/kite_top_right",
+    "layer3": "advancedweather:item/kite_bottom_left",
+    "layer4": "advancedweather:item/kite_bottom_right"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "advancedweather:deployed": 1
+      },
+      "model": "advancedweather:item/kite_handle"
+    }
+  ]
+}

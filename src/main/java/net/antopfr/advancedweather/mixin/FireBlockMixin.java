@@ -28,7 +28,7 @@ public class FireBlockMixin {
         if (intensity < 0.4f) return;
         if (random.nextFloat() > intensity * 0.5f) return;
 
-        Vec3 wind = WindDirectionCalc.get(level.getDayTime(), 0f);
+        Vec3 wind = WindDirectionCalc.getDirection(level.getDayTime(), 0f);
         Direction dir = Direction.getNearest(wind.x, 0.0, wind.z);
         BlockPos target = pos.relative(dir);
         if (!level.getBlockState(target).isAir()) return;

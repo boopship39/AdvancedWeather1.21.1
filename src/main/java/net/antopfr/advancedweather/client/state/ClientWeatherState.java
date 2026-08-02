@@ -2,9 +2,9 @@ package net.antopfr.advancedweather.client.state;
 
 import net.antopfr.advancedweather.client.ClientLocalHistory;
 import net.antopfr.advancedweather.client.ClientWeatherHistory;
-import net.antopfr.advancedweather.weather.maps.BiomeFogColors;
 import net.antopfr.advancedweather.util.FogColorLerp;
 import net.antopfr.advancedweather.util.FogLerp;
+import net.antopfr.advancedweather.weather.BiomeFogData;
 import net.antopfr.advancedweather.weather.WeatherEffects;
 import net.antopfr.advancedweather.weather.WeatherTypes;
 import net.minecraft.client.Minecraft;
@@ -47,7 +47,7 @@ public class ClientWeatherState {
         if (mc.level != null) {
             refreshFogColor(mc);
             if (currentBiome != null) {
-                ClientAtmosphereState.onBiomeChanged(currentBiome, type);
+                ClientAtmosphereState.onBiomeChanged(currentBiome);
             }
         }
     }
@@ -88,12 +88,12 @@ public class ClientWeatherState {
         if (biome != null && !biome.equals(currentBiome)) {
             currentBiome = biome;
             refreshFogColor(mc);
-            ClientAtmosphereState.onBiomeChanged(biome, currentWeather);
+            ClientAtmosphereState.onBiomeChanged(biome);
         }
     }
 
     public static void refreshFogColor(Minecraft mc) {
-        int target = BiomeFogColors.getColor(currentWeather, currentBiome);
+        int target = BiomeFogData.getColor(mc.level, currentWeather, currentBiome);
         fogColorLerp.setTarget(target);
     }
 

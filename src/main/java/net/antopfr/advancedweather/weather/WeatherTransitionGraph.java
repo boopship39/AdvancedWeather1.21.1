@@ -287,7 +287,8 @@ public class WeatherTransitionGraph {
                 float humidity = atmosphere.getHumidity();
                 w *= AtmosphereModifiers.pressureModifier(t.target(), p);
                 w *= AtmosphereModifiers.atmosphereModifier(t.target(), tempC, humidity);
-                w *= SeasonModifiers.seasonModifier(t.target(), level); // nouvelle ligne
+                w *= SeasonModifiers.seasonModifier(t.target(), level);
+                w *= AtmosphericForcing.biasModifier(t.target(), atmosphere.dominantBias());
             }
 
             w *= WeatherHistoryModifiers.historyModifier(t.target(), recentHistory);
@@ -306,13 +307,6 @@ public class WeatherTransitionGraph {
     }
 
     public record Prediction(WeatherTypes type, List<Transition> transitions, float[] weights) {}
-
-    public static WeatherTypes mostLikelyNext(WeatherTypes current, AtmosphericSystem atmosphere,
-                                              WeatherTypes.Dimension dimension,
-                                              ServerLevel level,
-                                              List<WeatherTypes> recentHistory) {
-        return mostLikelyNextWithWeights(current, atmosphere, dimension, level, recentHistory).type();
-    }
 
     public static Prediction mostLikelyNextWithWeights(WeatherTypes current, AtmosphericSystem atmosphere,
                                                        WeatherTypes.Dimension dimension,
@@ -345,6 +339,7 @@ public class WeatherTransitionGraph {
                 w *= AtmosphereModifiers.pressureModifier(t.target(), p);
                 w *= AtmosphereModifiers.atmosphereModifier(t.target(), tempC, humidity);
                 w *= SeasonModifiers.seasonModifier(t.target(), level);
+                w *= AtmosphericForcing.biasModifier(t.target(), atmosphere.dominantBias());
             }
 
             w *= WeatherHistoryModifiers.historyModifier(t.target(), recentHistory);

@@ -26,8 +26,7 @@ public class SeekShelterGoal extends Goal {
         if (!(mob.level() instanceof ServerLevel level)) return false;
         if (!isShelterWeather(WeatherManager.get(level).getCurrentWeather(level))) return false;
 
-        if (isUnderCover(mob.blockPosition())) return false;
-        return true;
+        return !isUnderCover(mob.blockPosition());
     }
 
     @Override

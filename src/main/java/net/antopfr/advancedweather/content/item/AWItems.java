@@ -2,7 +2,13 @@ package net.antopfr.advancedweather.content.item;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.antopfr.advancedweather.content.item.almanac.WeatherAlmanacItem;
+import net.antopfr.advancedweather.content.item.crystals.ClearCrystalItem;
+import net.antopfr.advancedweather.content.item.crystals.FireCrystalItem;
+import net.antopfr.advancedweather.content.item.crystals.FrostCrystalItem;
+import net.antopfr.advancedweather.content.item.crystals.RainCrystalItem;
+import net.antopfr.advancedweather.content.item.kite.KiteItem;
 import net.antopfr.advancedweather.util.AWRegistrate;
+import net.antopfr.advancedweather.weather.AtmosphericForcing;
 import net.minecraft.world.item.Item;
 
 @SuppressWarnings("unused")
@@ -38,6 +44,12 @@ public class AWItems {
 
     public static final ItemEntry<HygrometerItem> PORTABLE_HYGROMETER = AWRegistrate.get()
             .item("portable_hygrometer", HygrometerItem::new)
+            .initialProperties(() -> new Item.Properties().stacksTo(1))
+            .model((ctx, prov) -> {})
+            .register();
+
+    public static final ItemEntry<KiteItem> KITE_ITEM = AWRegistrate.get()
+            .item("kite", KiteItem::new)
             .initialProperties(() -> new Item.Properties().stacksTo(1))
             .model((ctx, prov) -> {})
             .register();
@@ -150,6 +162,52 @@ public class AWItems {
 
     public static final ItemEntry<Item> WIRELESS_MODULE = AWRegistrate.get()
             .item("wireless_module", Item::new)
+            .register();
+
+
+    // CRYSTALS
+    public static final ItemEntry<Item> DORMANT_CRYSTAL = AWRegistrate.get()
+            .item("dormant_crystal", Item::new)
+            .properties(Item.Properties::fireResistant)
+            .register();
+
+    public static final ItemEntry<FireCrystalItem> FIRE_CRYSTAL = AWRegistrate.get()
+            .item("fire_crystal", FireCrystalItem::new)
+            .properties(Item.Properties::fireResistant)
+            .register();
+
+    public static final ItemEntry<FrostCrystalItem> FROST_CRYSTAL = AWRegistrate.get()
+            .item("frost_crystal", FrostCrystalItem::new)
+            .register();
+
+    public static final ItemEntry<RainCrystalItem> RAIN_CRYSTAL = AWRegistrate.get()
+            .item("rain_crystal", RainCrystalItem::new)
+            .properties(Item.Properties::fireResistant)
+            .register();
+
+    public static final ItemEntry<ClearCrystalItem> CLEAR_CRYSTAL = AWRegistrate.get()
+            .item("clear_crystal", ClearCrystalItem::new)
+            .register();
+
+    // ROCKETS
+    public static final ItemEntry<SeedingRocketItem> SEEDING_ROCKET_WARM = AWRegistrate.get()
+            .item("seeding_rocket_warm", p -> new SeedingRocketItem(p,
+                    AtmosphericForcing.Bias.HEATING, +6f, +2f, +8f))
+            .register();
+
+    public static final ItemEntry<SeedingRocketItem> SEEDING_ROCKET_FROST = AWRegistrate.get()
+            .item("seeding_rocket_frost", p -> new SeedingRocketItem(p,
+                    AtmosphericForcing.Bias.COOLING, -6f, -4f, -8f))
+            .register();
+
+    public static final ItemEntry<SeedingRocketItem> SEEDING_ROCKET_RAIN = AWRegistrate.get()
+            .item("seeding_rocket_rain", p -> new SeedingRocketItem(p,
+                    AtmosphericForcing.Bias.SEEDING, -18f, +8f, 0f))
+            .register();
+
+    public static final ItemEntry<SeedingRocketItem> SEEDING_ROCKET_CLEAR = AWRegistrate.get()
+            .item("seeding_rocket_clear", p -> new SeedingRocketItem(p,
+                    AtmosphericForcing.Bias.DISSIPATING, +18f, -8f, 0f))
             .register();
 
     public static void register() {}

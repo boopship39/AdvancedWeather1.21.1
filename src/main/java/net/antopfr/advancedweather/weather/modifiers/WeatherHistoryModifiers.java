@@ -3,9 +3,9 @@ package net.antopfr.advancedweather.weather.modifiers;
 import net.antopfr.advancedweather.weather.WeatherTypes;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 public class WeatherHistoryModifiers {
-
 
     public static float historyModifier(WeatherTypes target, List<WeatherTypes> recentHistory) {
         if (recentHistory.isEmpty()) return 1.0f;
@@ -34,7 +34,7 @@ public class WeatherHistoryModifiers {
         return modifier;
     }
 
-    private static long countTrailingMatch(List<WeatherTypes> history, java.util.function.Predicate<WeatherTypes> predicate) {
+    private static long countTrailingMatch(List<WeatherTypes> history, Predicate<WeatherTypes> predicate) {
         long count = 0;
         for (int i = history.size() - 1; i >= 0; i--) {
             if (predicate.test(history.get(i))) count++;

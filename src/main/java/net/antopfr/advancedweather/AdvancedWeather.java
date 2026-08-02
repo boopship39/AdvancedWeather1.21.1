@@ -1,16 +1,16 @@
 package net.antopfr.advancedweather;
 
 import net.antopfr.advancedweather.compat.create.AWDisplaySources;
-import net.antopfr.advancedweather.compat.sable.ContraptionWindCompat;
 import net.antopfr.advancedweather.compat.sable.SableIntegration;
 import net.antopfr.advancedweather.config.AWClientConfig;
 import net.antopfr.advancedweather.config.AWCommonConfig;
 import net.antopfr.advancedweather.content.AWCreativeTab;
-import net.antopfr.advancedweather.content.event.CauldronInteractionsEvent;
+import net.antopfr.advancedweather.content.entity.AWEntitySerializers;
+import net.antopfr.advancedweather.server.event.CauldronInteractionsEvent;
 import net.antopfr.advancedweather.content.fluid.AWFluids;
-import net.antopfr.advancedweather.content.recipe.AWRecipeSerializers;
+import net.antopfr.advancedweather.content.AWRecipeSerializers;
 import net.antopfr.advancedweather.content.block.AWBlocks;
-import net.antopfr.advancedweather.content.item.AWDataComponents;
+import net.antopfr.advancedweather.content.AWDataComponents;
 import net.antopfr.advancedweather.content.item.AWItems;
 import net.antopfr.advancedweather.content.entity.AWEntities;
 import net.antopfr.advancedweather.network.*;
@@ -30,6 +30,7 @@ public class AdvancedWeather {
     public AdvancedWeather(IEventBus eb) {
         AWDataComponents.register(eb);
         AWRecipeSerializers.register(eb);
+        AWEntitySerializers.register(eb);
         AWCreativeTab.register();
         AWItems.register();
         AWBlocks.register();

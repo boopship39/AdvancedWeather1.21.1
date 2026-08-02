@@ -40,7 +40,7 @@ public class AWCommand {
 //                .then(forecast())
                 .then(history())
                 .then(debug())
-                .then(force())
+//                .then(force())
                 .then(set())
                 .then(setLocation())
                 .then(rainbow())
@@ -106,35 +106,36 @@ public class AWCommand {
     }
 
     // /aw force <pressure> <dewpoint> <temp> <seconds>  |  /aw force clear
-    private static LiteralArgumentBuilder<CommandSourceStack> force() {
-        return Commands.literal("force")
-                .then(Commands.argument("pressure", FloatArgumentType.floatArg(-100f, 100f))
-                        .then(Commands.argument("dewpoint", FloatArgumentType.floatArg(-30f, 30f))
-                                .then(Commands.argument("temp", FloatArgumentType.floatArg(-30f, 30f))
-                                        .then(Commands.argument("seconds", IntegerArgumentType.integer(1, 600))
-                                                .executes(ctx -> {
-                                                    ServerLevel level = ctx.getSource().getLevel();
-                                                    float p = FloatArgumentType.getFloat(ctx, "pressure");
-                                                    float dp = FloatArgumentType.getFloat(ctx, "dewpoint");
-                                                    float t = FloatArgumentType.getFloat(ctx, "temp");
-                                                    int sec = IntegerArgumentType.getInteger(ctx, "seconds");
-
-                                                    WeatherManager.get(level).getAtmosphere(level)
-                                                            .applyForcing(p, dp, t, sec * 20);
-
-                                                    ctx.getSource().sendSuccess(() -> Component.literal(
-                                                            String.format("Forcing applied: ΔP=%.0f ΔDP=%.0f ΔT=%.0f over %ds",
-                                                                    p, dp, t, sec)), true);
-                                                    return 1;
-                                                })))))
-                .then(Commands.literal("clear")
-                        .executes(ctx -> {
-                            ServerLevel level = ctx.getSource().getLevel();
-                            WeatherManager.get(level).getAtmosphere(level).clearForcings();
-                            ctx.getSource().sendSuccess(() -> Component.literal("Forcings cleared"), true);
-                            return 1;
-                        }));
-    }
+//    private static LiteralArgumentBuilder<CommandSourceStack> force() {
+//        return Commands.literal("force")
+//                .then(Commands.argument("pressure", FloatArgumentType.floatArg(-100f, 100f))
+//                        .then(Commands.argument("dewpoint", FloatArgumentType.floatArg(-30f, 30f))
+//                                .then(Commands.argument("temp", FloatArgumentType.floatArg(-30f, 30f))
+//                                        .then(Commands.argument("seconds", IntegerArgumentType.integer(1, 600))
+//                                                .then(Commands.argument("bias", IntegerArgumentType.integer(1, 600))
+//                                                        .executes(ctx -> {
+//                                                            ServerLevel level = ctx.getSource().getLevel();
+//                                                            float p = FloatArgumentType.getFloat(ctx, "pressure");
+//                                                            float dp = FloatArgumentType.getFloat(ctx, "dewpoint");
+//                                                            float t = FloatArgumentType.getFloat(ctx, "temp");
+//                                                            int sec = IntegerArgumentType.getInteger(ctx, "seconds");
+//
+//                                                            WeatherManager.get(level).getAtmosphere(level)
+//                                                                    .applyForcing(p, dp, t, sec * 20, bias);
+//
+//                                                            ctx.getSource().sendSuccess(() -> Component.literal(
+//                                                                    String.format("Forcing applied: ΔP=%.0f ΔDP=%.0f ΔT=%.0f over %ds",
+//                                                                            p, dp, t, sec)), true);
+//                                                            return 1;
+//                                                        })))))
+//                .then(Commands.literal("clear")
+//                        .executes(ctx -> {
+//                            ServerLevel level = ctx.getSource().getLevel();
+//                            WeatherManager.get(level).getAtmosphere(level).clearForcings();
+//                            ctx.getSource().sendSuccess(() -> Component.literal("Forcings cleared"), true);
+//                            return 1;
+//                        }));
+//    }
 
     // /aw set <type>
     private static LiteralArgumentBuilder<CommandSourceStack> set() {

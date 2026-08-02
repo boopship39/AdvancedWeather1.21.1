@@ -56,6 +56,16 @@
   "item.advancedweather.aluminum_sheet": "Aluminum Sheet",
   "item.advancedweather.weather_display": "Weather Display",
   "item.advancedweather.wireless_module": "Wireless Module",
+  "item.advancedweather.dormant_crystal": "Dormant Crystal",
+  "item.advancedweather.fire_crystal": "Fire Crystal",
+  "item.advancedweather.frost_crystal": "Frost Crystal",
+  "item.advancedweather.rain_crystal": "Rain Crystal",
+  "item.advancedweather.clear_crystal": "Clear Crystal",
+  "item.advancedweather.seeding_rocket_warm": "Warm Seeding Rocket",
+  "item.advancedweather.seeding_rocket_frost": "Frost Seeding Rocket",
+  "item.advancedweather.seeding_rocket_rain": "Rain Seeding Rocket",
+  "item.advancedweather.seeding_rocket_clear": "Clear Seeding Rocket",
+  "item.advancedweather.kite": "Kite",
 
   "advancedweather.link.sensor_selected": "Sensor selected - now right-click a weather station",
   "advancedweather.link.station_selected": "Station selected - now right-click a sensor",
@@ -96,6 +106,7 @@
   "block.advancedweather.bauxite_soil": "Bauxite Soil",
   "block.advancedweather.bauxite_rock": "Bauxite Rock",
   "block.advancedweather.aluminum_block": "Block of Aluminum",
+  "block.advancedweather.amalgamating_aluminum": "Block of Amalgamating Aluminum",
 
   "fluid_type.advancedweather.mercury": "Mercury",
   "fluid.advancedweather.mercury": "Mercury",
@@ -194,6 +205,8 @@
   "advancedweather.item_tooltip.calibrated_mercury_vial": "✔ Calibrated - ready for a thermometer",
 
   "advancedweather.jei.category.calibration": "Calibration Bench",
+  "advancedweather.jei.category.amalgamation": "Amalgamation",
+  "advancedweather.jei.amalgamation.humidity": "Faster in humid air",
 
   "advancement.advancedweather.root.title": "Advanced Weather",
   "advancement.advancedweather.root.description": "Mine cinnabar or bauxite",
@@ -300,6 +313,7 @@
   "advancedweather.types.brimstone_storm": "Brimstone Storm",
   "advancedweather.types.lava_rain": "Lava Rain",
   "advancedweather.types.ash_storm": "Ash Storm",
+  "advancedweather.types.hellfire": "Hellfire",
   "advancedweather.types.netherstorm": "Netherstorm",
   "advancedweather.types.end_clear": "End Clear",
   "advancedweather.types.void_storm": "Void Storm",
@@ -347,5 +361,27 @@
   "advancedweather.almanac.contents": "Contents",
 
   "force_group.advancedweather.wind": "Wind",
-  "force_group.advancedweather.wind.desc": "Atmospheric drag from prevailing winds"
+  "force_group.advancedweather.wind.desc": "Atmospheric drag from prevailing winds",
+
+  "item.advancedweather.rain_crystal.tip.summary": "Charged with the essence of the storm",
+  "item.advancedweather.rain_crystal.tip.detail.1": "Drop a dormant crystal on the ground",
+  "item.advancedweather.rain_crystal.tip.detail.3": "✔ During a thunderstorm",
+  "item.advancedweather.rain_crystal.tip.detail.2": "Let lightning strike it",
+
+  "item.advancedweather.fire_crystal.tip.summary": "Forged in molten heat",
+  "item.advancedweather.fire_crystal.tip.detail.1": "Drop a dormant crystal into lava",
+  "item.advancedweather.fire_crystal.tip.detail.3": "✔ In the Nether, during a hellfire",
+  "item.advancedweather.fire_crystal.tip.detail.2": "It floats, then transmutes",
+
+  "item.advancedweather.frost_crystal.tip.summary": "Returned frozen from the abyss",
+  "item.advancedweather.frost_crystal.tip.detail.1": "Drop a dormant crystal into the void",
+  "item.advancedweather.frost_crystal.tip.detail.3": "✔ In the End, during an enderstorm",
+  "item.advancedweather.frost_crystal.tip.detail.2": "The void yields it back, chilled",
+
+  "item.advancedweather.clear_crystal.tip.summary": "Tempered by pure sunlight",
+  "item.advancedweather.clear_crystal.tip.detail.1": "Release a dormant crystal at the height limit",
+  "item.advancedweather.clear_crystal.tip.detail.3": "✔ Under a clear sky",
+  "item.advancedweather.clear_crystal.tip.detail.2": "It rises, transmutes, and falls back",
+
+  "advancedweather.jei.info.kite": "Each dye colors the panel matching its position in the grid. Place a finished kite in the center with new dyes to recolor it."
 }

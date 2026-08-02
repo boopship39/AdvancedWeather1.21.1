@@ -2,7 +2,7 @@ package net.antopfr.advancedweather.content.block.archive;
 
 import net.antopfr.advancedweather.AdvancedWeather;
 import net.antopfr.advancedweather.config.AWCommonConfig;
-import net.antopfr.advancedweather.content.report.WeatherRecord;
+import net.antopfr.advancedweather.content.WeatherRecord;
 import net.antopfr.advancedweather.util.Key;
 import net.antopfr.advancedweather.util.ValueColors;
 import net.antopfr.advancedweather.weather.WeatherTypes;

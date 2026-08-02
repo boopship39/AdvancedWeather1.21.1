@@ -22,6 +22,9 @@ public class AtmosphericSystem {
     private static final float DP_MIN    = -20f;
     private static final float DP_MAX    = 28f;
 
+    private static final float NO_BOUND_MIN = -Float.MAX_VALUE;
+    private static final float NO_BOUND_MAX =  Float.MAX_VALUE;
+
     private static final long  SEED_P    = 0x4156L;
     private static final long  SEED_DP   = 0x9A3BL;
 
@@ -32,10 +35,10 @@ public class AtmosphericSystem {
 
     public enum Mode { PROCEDURAL, REAL, MANUAL }
     private Mode  mode               = Mode.PROCEDURAL;
-    private float softPMin           = P_MIN;
-    private float softPMax           = P_MAX;
-    private float softDPMin          = DP_MIN;
-    private float softDPMax          = DP_MAX;
+    private float softPMin  = NO_BOUND_MIN;
+    private float softPMax  = NO_BOUND_MAX;
+    private float softDPMin = NO_BOUND_MIN;
+    private float softDPMax = NO_BOUND_MAX;
     private int   manualTicksRemaining = 0;
 
     private float lastTemperature = 15f;
@@ -108,7 +111,7 @@ public class AtmosphericSystem {
                 ? 0f
                 : SeasonModifiers.temperatureOffset(level);
 
-        float solarAmplitude = computeSolarAmplitude(dewPoint);
+        float solarAmplitude = computeSolarAmplitude(dewPoint, profile);
         float solarEffect = profile.hasDayCycle
                 ? (float)Math.cos((tod - 6000) * Math.PI / 12000.0) * solarAmplitude
                 : 0f;
@@ -156,8 +159,8 @@ public class AtmosphericSystem {
         return (float)(100.0 * eTd / eT);
     }
 
-    private static float computeSolarAmplitude(float dewPointC) {
-        float normalized = Mth.clamp((dewPointC - DP_MIN) / (DP_MAX - DP_MIN), 0f, 1f);
+    private static float computeSolarAmplitude(float dewPointC, DimensionProfile profile) {
+        float normalized = Mth.clamp((dewPointC - profile.dpMin) / (profile.dpMax - profile.dpMin), 0f, 1f);
         return Mth.lerp(normalized, 8f, 3f);
     }
 
@@ -230,8 +233,8 @@ public class AtmosphericSystem {
 
     public void setProceduralMode() {
         mode = Mode.PROCEDURAL;
-        softPMin = P_MIN; softPMax = P_MAX;
-        softDPMin = DP_MIN; softDPMax = DP_MAX;
+        softPMin = NO_BOUND_MIN; softPMax = NO_BOUND_MAX;
+        softDPMin = NO_BOUND_MIN; softDPMax = NO_BOUND_MAX;
     }
 
     public void setManualMode(WeatherTypes type, ServerLevel level) {
@@ -256,14 +259,13 @@ public class AtmosphericSystem {
     }
 
     private void applyWeatherConstraints(WeatherTypes type, ServerLevel level) {
+        DimensionProfile profile = DimensionProfile.of(level);
         float pCenter = getRecommendedPressure(type);
         float dpCenter = getRecommendedDewPoint(type, level);
-        float pMargin = 15f;
-        float dpMargin = 4f;
-        softPMin = Mth.clamp(pCenter  - pMargin,  P_MIN,  P_MAX);
-        softPMax = Mth.clamp(pCenter  + pMargin,  P_MIN,  P_MAX);
-        softDPMin = Mth.clamp(dpCenter - dpMargin, DP_MIN, DP_MAX);
-        softDPMax = Mth.clamp(dpCenter + dpMargin, DP_MIN, DP_MAX);
+        softPMin = Mth.clamp(pCenter - 15f, profile.pMin, profile.pMax);
+        softPMax = Mth.clamp(pCenter + 15f, profile.pMin, profile.pMax);
+        softDPMin = Mth.clamp(dpCenter - 4f, profile.dpMin, profile.dpMax);
+        softDPMax = Mth.clamp(dpCenter + 4f, profile.dpMin, profile.dpMax);
     }
 
     public void snapToTarget(ServerLevel level, WeatherTypes type) {
@@ -338,9 +340,10 @@ public class AtmosphericSystem {
     }
 
     public static float getRecommendedDewPoint(WeatherTypes type, ServerLevel level) {
+        DimensionProfile profile = DimensionProfile.of(level);
         float base = getRecommendedDewPoint(type);
         float offset = SeasonModifiers.dewPointOffset(level);
-        return Mth.clamp(base + offset, DP_MIN, DP_MAX);
+        return Mth.clamp(base + offset, profile.dpMin, profile.dpMax);
     }
 
     // FORECAST
@@ -391,7 +394,7 @@ public class AtmosphericSystem {
         DimensionProfile profile = DimensionProfile.of(level);
         long tod = (level.getDayTime() + min * 1200L) % 24000;
         float solar = (float)Math.cos((tod - 6000) * Math.PI / 12000.0);
-        float amp   = computeSolarAmplitude(state.dewPoint);
+        float amp   = computeSolarAmplitude(state.dewPoint, profile);
         float se    = profile.hasDayCycle ? (solar > 0 ? solar * amp : solar * amp * 0.6f) : 0f;
         float pNorm = (state.pressure - profile.pMin) / (profile.pMax - profile.pMin);
         return Mth.clamp(getWeatherTempBase(wt) + se + (pNorm - 0.5f) * 4f, profile.tMin, profile.tMax);
@@ -428,7 +431,7 @@ public class AtmosphericSystem {
 
         long tod = (level.getDayTime() + min * 1200L) % 24000;
         float solar = (float)Math.cos((tod - 6000) * Math.PI / 12000.0);
-        float amp   = computeSolarAmplitude(f.dewPoint);
+        float amp   = computeSolarAmplitude(f.dewPoint, profile);
         float se    = profile.hasDayCycle ? (solar > 0 ? solar * amp : solar * amp * 0.6f) : 0f;
         float pNorm = (f.pressure - profile.pMin) / (profile.pMax - profile.pMin);
 
@@ -449,10 +452,9 @@ public class AtmosphericSystem {
     public float getWindIntensity() { return lastWindIntensity; }
     public Mode  getMode()          { return mode; }
 
-    public void applyForcing(float totalPressurePush, float totalDewPointPush,
-                             float tempOffset, int durationTicks) {
+    public void applyForcing(float totalPressurePush, float totalDewPointPush, float tempOffset, int durationTicks, AtmosphericForcing.Bias bias) {
         activeForcings.add(new AtmosphericForcing(
-                totalPressurePush, totalDewPointPush, tempOffset, durationTicks));
+                totalPressurePush, totalDewPointPush, tempOffset, durationTicks, bias));
     }
 
     public int getActiveForcingCount() { return activeForcings.size(); }
@@ -463,6 +465,13 @@ public class AtmosphericSystem {
         float sum = 0f;
         for (AtmosphericForcing f : activeForcings) sum += f.currentTempOffset();
         return sum;
+    }
+
+    public AtmosphericForcing.Bias dominantBias() {
+        for (AtmosphericForcing f : activeForcings) {
+            if (f.bias() != AtmosphericForcing.Bias.NONE) return f.bias();
+        }
+        return AtmosphericForcing.Bias.NONE;
     }
 
     // NBT
@@ -488,10 +497,10 @@ public class AtmosphericSystem {
         pressureVel = tag.contains("pressureVel") ? tag.getFloat("pressureVel") : 0f;
         dewPoint    = tag.contains("dewPoint")    ? tag.getFloat("dewPoint")    : 8f;
         dewPointVel = tag.contains("dewPointVel") ? tag.getFloat("dewPointVel") : 0f;
-        softPMin    = tag.contains("softPMin")    ? tag.getFloat("softPMin")    : P_MIN;
-        softPMax    = tag.contains("softPMax")    ? tag.getFloat("softPMax")    : P_MAX;
-        softDPMin   = tag.contains("softDPMin")   ? tag.getFloat("softDPMin")   : DP_MIN;
-        softDPMax   = tag.contains("softDPMax")   ? tag.getFloat("softDPMax")   : DP_MAX;
+        softPMin  = tag.contains("softPMin")  ? tag.getFloat("softPMin")  : NO_BOUND_MIN;
+        softPMax  = tag.contains("softPMax")  ? tag.getFloat("softPMax")  : NO_BOUND_MAX;
+        softDPMin = tag.contains("softDPMin") ? tag.getFloat("softDPMin") : NO_BOUND_MIN;
+        softDPMax = tag.contains("softDPMax") ? tag.getFloat("softDPMax") : NO_BOUND_MAX;
         manualTicksRemaining = tag.contains("manualTicks") ? tag.getInt("manualTicks") : 0;
         mode = tag.contains("atmosMode")
                 ? Mode.valueOf(tag.getString("atmosMode"))

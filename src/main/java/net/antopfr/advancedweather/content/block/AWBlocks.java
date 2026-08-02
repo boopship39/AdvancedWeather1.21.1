@@ -2,6 +2,7 @@ package net.antopfr.advancedweather.content.block;
 
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import net.antopfr.advancedweather.client.render.AmalgamatingAluminumRenderer;
 import net.antopfr.advancedweather.content.block.archive.WeatherArchiveBlock;
 import net.antopfr.advancedweather.content.block.archive.WeatherArchiveBlockEntity;
 import net.antopfr.advancedweather.content.block.autosampler.AutoSamplerBlock;
@@ -294,8 +295,8 @@ public class AWBlocks {
             .simpleItem()
             .register();
 
-    public static final BlockEntry<Block> ALUMINUM_BLOCK = AWRegistrate.get()
-            .block("aluminum_block", Block::new)
+    public static final BlockEntry<AluminumBlock> ALUMINUM_BLOCK = AWRegistrate.get()
+            .block("aluminum_block", AluminumBlock::new)
             .properties(p -> p.mapColor(MapColor.METAL)
                     .strength(4.0f, 6.0f)
                     .requiresCorrectToolForDrops()
@@ -303,6 +304,26 @@ public class AWBlocks {
             .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL)
             .simpleItem()
             .register();
+
+    public static final BlockEntry<AmalgamatingAluminumBlock> AMALGAMATING_ALUMINUM = AWRegistrate.get()
+            .block("amalgamating_aluminum", AmalgamatingAluminumBlock::new)
+            .properties(p -> p.mapColor(MapColor.METAL)
+                    .strength(4.0f, 6.0f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.METAL)
+                    .noLootTable())
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL)
+            .blockstate((ctx, prov) -> prov.simpleBlock(ctx.get(),
+                    prov.models().cubeAll("amalgamating_aluminum",
+                            prov.modLoc("block/aluminum_block"))))
+            .register();
+
+    public static final BlockEntityEntry<AmalgamatingAluminumBlockEntity> AMALGAMATING_ALUMINUM_BE =
+            AWRegistrate.get()
+                    .blockEntity("amalgamating_aluminum", AmalgamatingAluminumBlockEntity::new)
+                    .validBlock(AMALGAMATING_ALUMINUM)
+                    .renderer(() -> AmalgamatingAluminumRenderer::new)
+                    .register();
 
     public static final BlockEntry<MercuryCauldronBlock> MERCURY_CAULDRON =
             AWRegistrate.get()

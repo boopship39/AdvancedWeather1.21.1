@@ -1,12 +1,14 @@
 package net.antopfr.advancedweather.client.state;
 
+import net.antopfr.advancedweather.weather.BiomeAtmosphereData;
+import net.antopfr.advancedweather.weather.DimensionProfile;
 import net.antopfr.advancedweather.weather.WeatherTypes;
-import net.antopfr.advancedweather.weather.maps.BiomeHumidityData;
-import net.antopfr.advancedweather.weather.maps.BiomeTemperatureData;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.level.Level;
 
 public class ClientAtmosphereState {
 
@@ -60,21 +62,40 @@ public class ClientAtmosphereState {
     }
 
     // BIOMES
-    public static void onBiomeChanged(ResourceLocation biome, WeatherTypes weather) {
+    public static void onBiomeChanged(ResourceLocation biome) {
+        Level level = Minecraft.getInstance().level;
         if (biome == null) {
             tempOffsetTarget = 0f;
             humOffsetTarget = 0f;
             return;
         }
-        tempOffsetTarget = BiomeTemperatureData.getBiomeOffset(biome);
-
-        float biomeHumBase = BiomeHumidityData.getBaseHumidity(biome, weather);
-        humOffsetTarget = biomeHumBase - 60.0f;
+        tempOffsetTarget = BiomeAtmosphereData.getBiomeOffset(level, biome);
+        humOffsetTarget  = BiomeAtmosphereData.getHumidityOffset(level, biome);
     }
 
     public static void tick() {
         tempOffset = Mth.lerp(0.02f, tempOffset, tempOffsetTarget);
         humOffset  = Mth.lerp(0.02f, humOffset, humOffsetTarget);
+    }
+
+    // DIMENSION PROFILE
+
+    private static DimensionProfile profile() {
+        Level level = Minecraft.getInstance().level;
+        return level != null ? DimensionProfile.of(level) : DimensionProfile.FALLBACK;
+    }
+
+    private static DimensionProfile profile(Level level) {
+        return level != null ? DimensionProfile.of(level) : DimensionProfile.FALLBACK;
+    }
+
+    private static float clampPressure(float value, DimensionProfile p) {
+        float margin = (p.pMax - p.pMin) * 1.5f + 50f;
+        return Mth.clamp(value, Math.max(0f, p.pMin - margin), p.pMax + margin);
+    }
+
+    private static float clampTemperature(float value, DimensionProfile p) {
+        return Mth.clamp(value, p.tMin - 40f, p.tMax + 40f);
     }
 
     // GETTERS
@@ -87,7 +108,7 @@ public class ClientAtmosphereState {
 
     public static float getLocalPressure() {
         float deltaY = getClientPlayerY() - 64f;
-        return Mth.clamp(pressure - (deltaY * LAPSE_RATE_PRESSURE), 800f, 1200f);
+        return clampPressure(pressure - (deltaY * LAPSE_RATE_PRESSURE), profile());
     }
 
     public static float getTrend()             { return pressureVel; }
@@ -100,16 +121,16 @@ public class ClientAtmosphereState {
     public static float getConfidenceNext() { return confidenceNext; }
     public static float getConfidenceIn30() { return confidenceIn30; }
 
-
     public static float getLocalTemperature() {
         float deltaY = getClientPlayerY() - 64f;
         float localT = (temperature + tempOffset) - (deltaY * LAPSE_RATE_TEMP);
-        return Mth.clamp(localT, -80f, 150f);
+        return clampTemperature(localT, profile());
     }
+
     public static float getLocalTemperatureForecast() {
         float deltaY = getClientPlayerY() - 64f;
         float localTForecast = (tempForecast + tempOffsetTarget) - (deltaY * LAPSE_RATE_TEMP);
-        return Mth.clamp(localTForecast, -80f, 150f);
+        return clampTemperature(localTForecast, profile());
     }
 
     public static float getLocalHumidity()          { return Mth.clamp(humidity + humOffset, 0f, 100f); }
@@ -120,28 +141,25 @@ public class ClientAtmosphereState {
         return ClientWeatherState.getCurrentWeather();
     }
 
-    public static float getLocalPressureAt(net.minecraft.world.level.Level level, net.minecraft.core.BlockPos pos) {
+    public static float getLocalPressureAt(Level level, BlockPos pos) {
         float deltaY = pos.getY() - 64f;
-        return Mth.clamp(pressure - (deltaY * LAPSE_RATE_PRESSURE), 800f, 1200f);
+        return clampPressure(pressure - (deltaY * LAPSE_RATE_PRESSURE), profile(level));
     }
 
-    public static float getLocalTemperatureAt(net.minecraft.world.level.Level level, net.minecraft.core.BlockPos pos) {
+    public static float getLocalTemperatureAt(Level level, BlockPos pos) {
         float biomeOffset = 0f;
         var biomeKey = level.getBiome(pos).unwrapKey().map(ResourceKey::location).orElse(null);
         if (biomeKey != null) {
-            biomeOffset = BiomeTemperatureData.getBiomeOffset(biomeKey);
+            biomeOffset = BiomeAtmosphereData.getBiomeOffset(level, biomeKey);
         }
         float deltaY = pos.getY() - 64f;
         float localT = (temperature + biomeOffset) - (deltaY * LAPSE_RATE_TEMP);
-        return Mth.clamp(localT, -80f, 150f);
+        return clampTemperature(localT, profile(level));
     }
 
-    public static float getLocalHumidityAt(net.minecraft.world.level.Level level, net.minecraft.core.BlockPos pos) {
-        float biomeOffset = 0f;
+    public static float getLocalHumidityAt(Level level, BlockPos pos) {
         var biomeKey = level.getBiome(pos).unwrapKey().map(ResourceKey::location).orElse(null);
-        if (biomeKey != null) {
-            biomeOffset = BiomeHumidityData.getBaseHumidity(biomeKey, clientWeather()) - 60.0f;
-        }
+        float biomeOffset = BiomeAtmosphereData.getHumidityOffset(level, biomeKey);
         return Mth.clamp(humidity + biomeOffset, 0f, 100f);
     }
 

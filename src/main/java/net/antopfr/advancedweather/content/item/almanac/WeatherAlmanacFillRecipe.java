@@ -1,10 +1,10 @@
 package net.antopfr.advancedweather.content.item.almanac;
 
 import net.antopfr.advancedweather.config.AWCommonConfig;
-import net.antopfr.advancedweather.content.recipe.AWRecipeSerializers;
-import net.antopfr.advancedweather.content.item.AWDataComponents;
+import net.antopfr.advancedweather.content.AWRecipeSerializers;
+import net.antopfr.advancedweather.content.AWDataComponents;
 import net.antopfr.advancedweather.content.item.AWItems;
-import net.antopfr.advancedweather.content.report.WeatherRecord;
+import net.antopfr.advancedweather.content.WeatherRecord;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingBookCategory;

@@ -1,7 +1,7 @@
 package net.antopfr.advancedweather.content.item.almanac;
 
-import net.antopfr.advancedweather.content.item.AWDataComponents;
-import net.antopfr.advancedweather.content.report.WeatherRecord;
+import net.antopfr.advancedweather.content.AWDataComponents;
+import net.antopfr.advancedweather.content.WeatherRecord;
 import net.antopfr.advancedweather.util.Key;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;

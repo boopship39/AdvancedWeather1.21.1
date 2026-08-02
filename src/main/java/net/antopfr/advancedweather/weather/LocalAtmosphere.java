@@ -1,7 +1,5 @@
 package net.antopfr.advancedweather.weather;
 
-import net.antopfr.advancedweather.weather.maps.BiomeHumidityData;
-import net.antopfr.advancedweather.weather.maps.BiomeTemperatureData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -16,33 +14,36 @@ public class LocalAtmosphere {
     public static float getLocalTemperature(ServerLevel level, BlockPos pos) {
         WeatherManager manager = WeatherManager.get(level);
         AtmosphericSystem atmosphere = manager.getAtmosphere(level);
+        DimensionProfile profile = DimensionProfile.of(level);
 
         float base = atmosphere.getTemperature();
 
         ResourceLocation biome = level.getBiome(pos).unwrapKey()
                 .map(ResourceKey::location).orElse(null);
-        float biomeOffset = BiomeTemperatureData.getBiomeOffset(biome);
+        float biomeOffset = BiomeAtmosphereData.getBiomeOffset(level, biome);
 
         float deltaY = pos.getY() - 64f;
-        return Mth.clamp(base + biomeOffset - deltaY * LAPSE_RATE_TEMP, -80f, 150f);
+        return Mth.clamp(base + biomeOffset - deltaY * LAPSE_RATE_TEMP,
+                profile.tMin - 40f, profile.tMax + 40f);
     }
 
     public static float getLocalPressure(ServerLevel level, BlockPos pos) {
+        DimensionProfile profile = DimensionProfile.of(level);
         float base = WeatherManager.get(level).getAtmosphere(level).getPressure();
         float deltaY = pos.getY() - 64f;
-        return Mth.clamp(base - deltaY * LAPSE_RATE_PRESSURE, 800f, 1200f);
+
+        float margin = (profile.pMax - profile.pMin) * 1.5f + 50f;
+        return Mth.clamp(base - deltaY * LAPSE_RATE_PRESSURE,
+                Math.max(0f, profile.pMin - margin), profile.pMax + margin);
     }
 
     public static float getLocalHumidity(ServerLevel level, BlockPos pos) {
         WeatherManager manager = WeatherManager.get(level);
-        WeatherTypes weather = manager.getCurrentWeather(level);
         float base = manager.getAtmosphere(level).getHumidity();
 
         ResourceLocation biome = level.getBiome(pos).unwrapKey()
                 .map(ResourceKey::location).orElse(null);
-        float biomeOffset = biome != null
-                ? BiomeHumidityData.getBaseHumidity(biome, weather) - 60.0f
-                : 0f;
+        float biomeOffset = BiomeAtmosphereData.getHumidityOffset(level, biome);
 
         return Mth.clamp(base + biomeOffset, 0f, 100f);
     }

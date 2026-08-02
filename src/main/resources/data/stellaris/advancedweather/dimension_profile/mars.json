@@ -1,0 +1,10 @@
+{
+  "pressure_min": 4.0,
+  "pressure_max": 11.0,
+  "pressure_nominal": 6.0,
+  "temperature_min": -80.0,
+  "temperature_max": 20.0,
+  "dew_point_min": -90.0,
+  "dew_point_max": -60.0,
+  "has_day_cycle": true
+}

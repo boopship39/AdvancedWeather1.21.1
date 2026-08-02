@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " _ ",
+    "#C#",
+    " ~ "
+  ],
+  "key": {
+    "_": {
+      "item": "minecraft:paper"
+    },
+    "#": {
+      "item": "minecraft:gunpowder"
+    },
+    "C": {
+      "item": "advancedweather:clear_crystal"
+    },
+    "~": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "id": "advancedweather:seeding_rocket_clear"
+  }
+}

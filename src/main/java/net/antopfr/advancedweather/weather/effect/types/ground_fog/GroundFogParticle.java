@@ -64,11 +64,7 @@ public class GroundFogParticle extends TextureSheetParticle {
         this.alpha = baseAlpha * fadeIn * fadeOut * pulse;
     }
 
-    /**
-     * Calcule et applique la couleur du fog selon le biome sous la particule.
-     */
     private void updateParticleColor() {
-        if (this.level == null) return;
 
         ResourceLocation biomeLocation = this.level.getBiome(BlockPos.containing(this.x, this.y, this.z))
                 .unwrapKey()
@@ -94,12 +90,8 @@ public class GroundFogParticle extends TextureSheetParticle {
             int sky = (packedLight >> 16) & 0xFFFF;
             int block = packedLight & 0xFFFF;
 
-            // Le brouillard est une substance volatile qui capte très bien la lumière ambiante.
-            // On lui impose un seuil minimum de luminosité du ciel (ex: 6) pour qu'il reste
-            // visible et vaporeux en extérieur sous les arbres, plutôt que de devenir opaque/sombre.
             sky = Math.max(sky, 6);
 
-            // Repackage des valeurs dans l'entier 32 bits attendu par le shader de Minecraft
             return (sky << 16) | block;
         }
 

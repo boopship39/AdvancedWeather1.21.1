@@ -55,7 +55,7 @@ public abstract class WindmillBearingMixin {
             BlockState state = bearingSelf.getBlockState();
             if (state.hasProperty(BlockStateProperties.FACING)) {
                 Direction facing = state.getValue(BlockStateProperties.FACING);
-                Vec3 windDir = WindDirectionCalc.get(level.getDayTime(), 0f);
+                Vec3 windDir = WindDirectionCalc.getDirection(level.getDayTime(), 0f);
                 float directionFactor = WindmillDirectionFactor.compute(facing, windDir);
                 float bonusPortion = speedMultiplier - 1.0f;
                 speedMultiplier = 1.0f + bonusPortion * directionFactor;

@@ -1,7 +1,7 @@
 package net.antopfr.advancedweather.content.item.almanac;
 
 import net.antopfr.advancedweather.AdvancedWeather;
-import net.antopfr.advancedweather.content.report.WeatherRecord;
+import net.antopfr.advancedweather.content.WeatherRecord;
 import net.antopfr.advancedweather.util.Key;
 import net.antopfr.advancedweather.util.ValueColors;
 import net.antopfr.advancedweather.weather.WeatherTypes;
@@ -63,7 +63,6 @@ public class WeatherAlmanacScreen extends Screen {
     private int turnDirection = 0;
     private int displayedSpread = 0;
 
-    private final ItemStack almanacStack;
     private final List<WeatherRecord> records;
 
     private int spread = 0;
@@ -92,7 +91,6 @@ public class WeatherAlmanacScreen extends Screen {
 
     public WeatherAlmanacScreen(ItemStack almanacStack) {
         super(Component.literal("Weather Almanac"));
-        this.almanacStack = almanacStack;
         this.records = WeatherAlmanacItem.getRecords(almanacStack);
     }
 
@@ -201,7 +199,7 @@ public class WeatherAlmanacScreen extends Screen {
             int cy = bookTop() + (BOOK_H - COVER_H) / 2;
             g.blit(COVER_TEXTURE, cx, cy, 0, 0, COVER_W, COVER_H, COVER_W, COVER_H);
 
-            float pulse = 0.6f + 0.4f * Mth.sin((minecraft.gui.getGuiTicks() + partialTick) * 0.15f);
+            float pulse = 0.6f + 0.4f * Mth.sin((Objects.requireNonNull(minecraft).gui.getGuiTicks() + partialTick) * 0.15f);
             int hintAlpha = (int) (pulse * 255);
             String hint = "Click to open";
             g.drawString(font, hint, cx + COVER_W / 2 - font.width(hint) / 2,
@@ -454,7 +452,7 @@ public class WeatherAlmanacScreen extends Screen {
         if (bookState != BookState.CLOSED) return;
         bookState = BookState.OPENING;
         openTicks = OPEN_DURATION_TICKS;
-        minecraft.getSoundManager().play(
+        Objects.requireNonNull(minecraft).getSoundManager().play(
                 SimpleSoundInstance.forUI(SoundEvents.BOOK_PAGE_TURN, 0.8f));
         updateButtons();
     }
@@ -482,7 +480,7 @@ public class WeatherAlmanacScreen extends Screen {
                         && mouseY >= lineY - 1 && mouseY < lineY + TOC_LINE_H - 1) {
                     spread = (i + 1) / 2;
                     updateButtons();
-                    minecraft.getSoundManager().play(
+                    Objects.requireNonNull(minecraft).getSoundManager().play(
                             SimpleSoundInstance.forUI(SoundEvents.BOOK_PAGE_TURN, 1.0f));
                     return true;
                 }

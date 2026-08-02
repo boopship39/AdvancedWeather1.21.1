@@ -3,9 +3,9 @@ package net.antopfr.advancedweather.client.cloud;
 import net.antopfr.advancedweather.client.state.ClientAtmosphereState;
 import net.antopfr.advancedweather.client.state.ClientWeatherState;
 import net.antopfr.advancedweather.util.WeatherPalette;
+import net.antopfr.advancedweather.weather.BiomeFogData;
 import net.antopfr.advancedweather.weather.WeatherTypes;
 import net.antopfr.advancedweather.weather.effect.global.wind.WindDirection;
-import net.antopfr.advancedweather.weather.maps.BiomeFogColors;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
@@ -55,7 +55,7 @@ public class CloudState {
 
         Vec3 targetColor = typeTint;
         if (weather.hasFog()) {
-            int fog = BiomeFogColors.getColor(weather, biome);
+            int fog = BiomeFogData.getColor(mc.level, weather, biome);
             Vec3 fogVec = normalizedHue(fog);
             targetColor = typeTint.lerp(fogVec, BIOME_INFLUENCE);
         }

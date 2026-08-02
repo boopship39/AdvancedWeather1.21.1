@@ -55,7 +55,6 @@ public enum WeatherTypes {
     public String translationKey() { return translationKey; }
 
     public Component displayName() { return Component.translatable(translationKey); }
-
     public String displayString() { return Component.translatable(translationKey).getString(); }
 
     public boolean isVanillaRaining()   { return vanillaRaining; }

@@ -1,11 +1,6 @@
 package net.antopfr.advancedweather.api;
 
-import net.antopfr.advancedweather.weather.AtmosphericSystem;
-import net.antopfr.advancedweather.weather.DimensionProfile;
-import net.antopfr.advancedweather.weather.ForecastConfidence;
-import net.antopfr.advancedweather.weather.WeatherManager;
-import net.antopfr.advancedweather.weather.WeatherTransitionGraph;
-import net.antopfr.advancedweather.weather.WeatherTypes;
+import net.antopfr.advancedweather.weather.*;
 import net.minecraft.server.level.ServerLevel;
 
 import java.util.List;
@@ -109,8 +104,8 @@ public final class AdvancedWeatherAPI {
      * @param durationTicks how long the forcing lasts, in ticks
      */
     public static void applyForcing(ServerLevel level, float pressurePush, float dewPointPush,
-                                    float tempOffset, int durationTicks) {
+                                    float tempOffset, int durationTicks, AtmosphericForcing.Bias bias) {
         WeatherManager.get(level).getAtmosphere(level)
-                .applyForcing(pressurePush, dewPointPush, tempOffset, durationTicks);
+                .applyForcing(pressurePush, dewPointPush, tempOffset, durationTicks, bias);
     }
 }

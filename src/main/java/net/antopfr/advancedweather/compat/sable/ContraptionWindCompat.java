@@ -43,7 +43,7 @@ public final class ContraptionWindCompat {
 
         double speed = (intensity * intensity * 120.0) / 3.6;
 
-        Vec3 dir = WindDirectionCalc.get(level.getDayTime(), 0f);
+        Vec3 dir = WindDirectionCalc.getDirection(level.getDayTime(), 0f);
         Vector3d windWorld = new Vector3d(dir.x * speed, 0.0, dir.z * speed);
 
         for (ServerSubLevel sub : container.getAllSubLevels()) {
